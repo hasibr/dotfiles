@@ -40,7 +40,6 @@ install_other_tools() {
 install_other_apps() {
     brew_install_cask "istat-menus"
     brew_install_cask "alfred"
-    brew_install_cask "google-chrome"
     brew_install_cask "slack"
     brew_install_cask "notion"
     brew_install_cask "spotify"

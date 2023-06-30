@@ -2,14 +2,17 @@
 
 install_prerequisities() {
     # If Homebrew package manager is not installed, install it. Otherwise update Homebrew itself.
-    if command -v brew >/dev/null 2>&1; then
+    if which brew >/dev/null 2>&1; then
         printf "Homebrew is already installed. Updating Homebrew\n"
         brew update
     else
         printf "Installing Homebrew package manager\n"
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+        # Add brew to PATH
         (echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> $HOME/.zprofile
         eval "$(/opt/homebrew/bin/brew shellenv)"
+        # Reload shell to have brew in PATH
+        source ~/.zshrc
         printf "Installed Homebrew\n"
     fi
 
