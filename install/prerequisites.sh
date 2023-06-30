@@ -8,6 +8,8 @@ install_prerequisities() {
     else
         printf "Installing Homebrew package manager\n"
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+        (echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> $HOME/.zprofile
+        eval "$(/opt/homebrew/bin/brew shellenv)"
         printf "Installed Homebrew\n"
     fi
 
