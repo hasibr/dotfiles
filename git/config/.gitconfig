@@ -1,0 +1,10 @@
+# Always rebase when pulling (git pull --rebase)
+[pull]
+    rebase = true
+[init]
+    defaultBranch = main
+[core]
+	editor = vi
+	excludesfile = ~/.gitignore_global
+[user]
+	name = Hasib Rahman

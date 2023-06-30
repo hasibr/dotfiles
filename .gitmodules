@@ -1,0 +1,15 @@
+[submodule "alacritty/config/themes/catppuccin"]
+	path = alacritty/config/themes/catppuccin
+	url = https://github.com/catppuccin/alacritty.git
+[submodule "tmux/config/plugins/tpm"]
+	path = tmux/config/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm
+[submodule "nvim/config"]
+	path = nvim/config
+	url = https://github.com/hasibr/NvChad.git
+[submodule "zsh/config/oh-my-zsh/custom/plugins/zsh-autosuggestions"]
+	path = zsh/config/oh-my-zsh/custom/plugins/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions
+[submodule "zsh/config/oh-my-zsh/custom/plugins/zsh-syntax-highlighting"]
+	path = zsh/config/oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting.git

@@ -1,0 +1,2 @@
+$DOTFILES/git/config/.gitconfig=$HOME/.gitconfig
+$DOTFILES/git/config/gitignore=$HOME/.gitignore_global

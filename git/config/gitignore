@@ -1,0 +1,18 @@
+# Global gitignore that lists files that will be ignored on all Git projects.
+# To enable: git config --global core.excludesfile <path-to-global-gitignore>
+
+# Debug logs (npm, yarn)
+*.log
+
+# Editor artifacts (vim, VS Code, JetBrains)
+.*.sw[a-z]
+*~
+.#*
+.vscode
+.idea/
+
+# OS files
+.DS_Store*
+ehthumbs.db
+Icon?
+Thumbs.db
