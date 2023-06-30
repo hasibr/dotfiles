@@ -1,5 +1,16 @@
 # Dotfiles
 
+## Prerequisites
+
+Update the shell entry with your username (`echo $USERNAME`).
+
+```yaml
+shell:
+  # Default process for a shell on macOS should use login -fp $USERNAME and not a direct invocation of /bin/bash
+  program: login
+  args: ["-fp", "hasibr"]
+```
+
 ## Install
 
 ```
