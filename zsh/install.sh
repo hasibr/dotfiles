@@ -5,8 +5,8 @@ source "$(dirname "${BASH_SOURCE[0]}")/../install/utils.sh"
 
 # Install oh-my-zsh
 printf "Installing oh-my-zsh (https://github.com/ohmyzsh/ohmyzsh)\n"
-# sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # Install powerlevel10k
 printf "Installing powerlevel10k (https://github.com/romkatv/powerlevel10k)\n"
-# brew_install "romkatv/powerlevel10k/powerlevel10k"
+brew_install "romkatv/powerlevel10k/powerlevel10k"
