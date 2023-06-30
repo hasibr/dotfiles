@@ -1,2 +1,3 @@
 source "$(dirname "${BASH_SOURCE[0]}")/../install/utils.sh"
-brew_install "git"
+# Git is installed on macOS by default
+# brew_install "git"

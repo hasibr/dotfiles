@@ -40,9 +40,5 @@ install_other_tools() {
 install_other_apps() {
     brew_install_cask "istat-menus"
     brew_install_cask "alfred"
-    brew_install_cask "slack"
-    brew_install_cask "notion"
     brew_install_cask "spotify"
-    brew_install_cask "readdle-spark"
-    brew_install_cask "rancher"
 }
