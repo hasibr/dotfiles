@@ -1,1 +1,3 @@
-$DOTFILES/hammerspoon/init.lua=$HOME/.config/hammerspoon/init.lua
+$DOTFILES/hammerspoon/config/init.lua=$HOME/.config/hammerspoon/init.lua
+$DOTFILES/hammerspoon/config/utils=$HOME/.config/hammerspoon/utils
+
