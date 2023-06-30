@@ -7,7 +7,7 @@ install_prerequisities() {
         brew update
     else
         printf "Installing Homebrew package manager\n"
-        NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
         printf "Installed Homebrew\n"
     fi
 
