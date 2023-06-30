@@ -34,7 +34,7 @@ link_file () {
 
       else
 
-        printf "\rFile already exists: $dst ($(basename "$src")), what do you want to do?\n\
+        printf "\rFile already exists: $dst. What would you like to do?\n\
         [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?: "
         read -n 1 action  < /dev/tty
 
@@ -79,14 +79,14 @@ link_file () {
 
     if [ "$skip" == "true" ]
     then
-      printf "Skipped creating symbolic link for $src\n"
+      printf "Skipped creating symbolic link.\n"
     fi
   fi
 
   if [ "$skip" != "true" ]  # "false" or empty
   then
     ln -s "$1" "$2"
-    printf "Created symbolic link from $1 to $2\n"
+    printf "Created symbolic link.\n"
   fi
 }
 
@@ -113,14 +113,9 @@ install_dotfiles () {
     # Read each line of the links.prop file
     cat "$app_link_file_path" | while read line
     do
-        local src dst dir
+        local src dst
         src=$(eval echo "$line" | cut -d '=' -f 1)
         dst=$(eval echo "$line" | cut -d '=' -f 2)
-        dir=$(dirname $dst)
-        
-        if ! directory_exists "$dir"; then
-          mkdir -p "$dir"
-        fi
         link_file "$src" "$dst"
     done
   done
