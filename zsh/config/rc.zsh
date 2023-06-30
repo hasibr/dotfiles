@@ -8,7 +8,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/hasibr/.oh-my-zsh"
+export ZSH="/Users/$USERNAME/.oh-my-zsh"
 
 # Set name of the theme to load
 ZSH_THEME="powerlevel10k/powerlevel10k"
@@ -112,7 +112,7 @@ export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-export PATH="/Users/hasibr/.rd/bin:$PATH"
+export PATH="/Users/$USERNAME/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
 
 # >>> conda initialize >>>
@@ -121,16 +121,16 @@ __conda_setup="$('/Users/hasibr/mambaforge/bin/conda' 'shell.zsh' 'hook' 2> /dev
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/Users/hasibr/mambaforge/etc/profile.d/conda.sh" ]; then
-        . "/Users/hasibr/mambaforge/etc/profile.d/conda.sh"
+    if [ -f "/Users/$USERNAME/mambaforge/etc/profile.d/conda.sh" ]; then
+        . "/Users/$USERNAME/mambaforge/etc/profile.d/conda.sh"
     else
-        export PATH="/Users/hasibr/mambaforge/bin:$PATH"
+        export PATH="/Users/$USERNAME/mambaforge/bin:$PATH"
     fi
 fi
 unset __conda_setup
 
-if [ -f "/Users/hasibr/mambaforge/etc/profile.d/mamba.sh" ]; then
-    . "/Users/hasibr/mambaforge/etc/profile.d/mamba.sh"
+if [ -f "/Users/$USERNAME/mambaforge/etc/profile.d/mamba.sh" ]; then
+    . "/Users/$USERNAME/mambaforge/etc/profile.d/mamba.sh"
 fi
 # <<< conda initialize <<<
 
