@@ -103,21 +103,27 @@ install_dotfiles () {
   local overwrite_all=false backup_all=false skip_all=false
 
   # Find folders in dotfiles directory with a links.prop file (returns list of paths)
-  find -H "$DOTFILES" -maxdepth 2 -name "$link_file_name" | while read app_link_file_path
+  find -H "$DOTFILES" -maxdepth 2 -name "$link_file_name" | while read app_symlink_prop_fpath
   do
     # Extract substring from second-last "/" to last "/" to get folder name (app name)
-    local folder_name="${app_link_file_path%/*}"
+    local folder_name="${app_symlink_prop_fpath%/*}"
     folder_name="${folder_name##*/}"
     printf "Installing dotfiles for $folder_name\n"
 
     # Read each line of the links.prop file
-    cat "$app_link_file_path" | while read line
-    do
-        local src dst
-        src=$(eval echo "$line" | cut -d '=' -f 1)
-        dst=$(eval echo "$line" | cut -d '=' -f 2)
-        link_file "$src" "$dst"
-    done
+    while IFS='=' read -r src dst; do
+      # Skip lines starting with '#' or empty lines
+      if [[ $src =~ ^#|^$ ]]; then
+        continue
+      fi
+
+      # Trim leading/trailing whitespace from the key and value
+      src=$(echo "$src" | awk '{$1=$1};1')
+      dst=$(echo "$dst" | awk '{$1=$1};1')
+
+      # Create symbolic links from src to dst
+      link_file "$src" "$dst"
+    done < "$app_symlink_prop_fpath"
   done
 }
 
