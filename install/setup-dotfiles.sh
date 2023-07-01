@@ -30,6 +30,7 @@ link_file () {
       if [ "$currentSrc" == "$src" ]
       then
 
+        printf "The symlink between the source and destination already exists.\n"
         skip=true;
 
       else
@@ -117,9 +118,16 @@ install_dotfiles () {
         continue
       fi
 
-      # Trim leading/trailing whitespace from the key and value
-      src=$(echo "$src" | awk '{$1=$1};1')
-      dst=$(echo "$dst" | awk '{$1=$1};1')
+      # Remove leading whitespace characters
+      src="${src#"${src%%[![:space:]]*}"}"
+      dst="${dst#"${dst%%[![:space:]]*}"}"
+      # Remove trailing whitespace characters
+      src="${src%"${src##*[![:space:]]}"}"
+      dst="${dst%"${dst##*[![:space:]]}"}"
+
+      # Forcefully expand the entire path
+      eval "src=$src"
+      eval "dst=$dst"
 
       # Create symbolic links from src to dst
       link_file "$src" "$dst"

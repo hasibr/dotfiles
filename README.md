@@ -1,8 +1,17 @@
 # Dotfiles
 
+
+
+## Table of Contents
+
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Footnotes](#footnotes)
+  - [Local ZSH Config](#local-zsh-config)
+
 ## Prerequisites
 
-Update the shell entry with your username (`echo $USERNAME`).
+Update the shell entry with your username (`echo $USERNAME` to print your username).
 
 ```yaml
 shell:
@@ -11,16 +20,33 @@ shell:
   args: ["-fp", "hasibr"]
 ```
 
-## Install
+## Installation
 
-```
-git clone git@github.com:hasibr/dotfiles.git
-cd dotfiles
-chmod +x ./install/setup.sh
-./install/setup.sh
-```
+1. Clone this repository.
 
-## Local ZSH Config
+    ```sh
+    git clone git@github.com:hasibr/dotfiles.git $HOME/dotfiles \
+      && cd $HOME/dotfiles
+    ```
+
+2. Pull in the latest submodules defined in the repository.
+
+    ```sh
+    git submodule update --init --recursive
+    ```
+
+    The `--init` flag initializes any new submodules that might have been added, and the `--recursive` flag ensures that nested submodules are also updated.
+
+3. Run the installation script (`setup.sh`).
+
+    ```sh
+    chmod +x ./install/setup.sh
+    ./install/setup.sh
+    ```
+
+## Footnotes
+
+### Local ZSH Config
 
 If there's customization you want ZSH to load on startup that is specific to 
 this machine (stuff you don't want to commit into the repo), create `~/.env.sh`

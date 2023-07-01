@@ -134,3 +134,5 @@ if [ -f "/Users/$USERNAME/mambaforge/etc/profile.d/mamba.sh" ]; then
 fi
 # <<< conda initialize <<<
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

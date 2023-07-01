@@ -1,15 +1,24 @@
 [submodule "alacritty/config/themes/catppuccin"]
 	path = alacritty/config/themes/catppuccin
 	url = https://github.com/catppuccin/alacritty.git
+	shallow = true
 [submodule "tmux/config/plugins/tpm"]
 	path = tmux/config/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
+	shallow = true
 [submodule "nvim/config"]
 	path = nvim/config
 	url = https://github.com/hasibr/NvChad.git
+	shallow = true
 [submodule "zsh/config/oh-my-zsh/custom/plugins/zsh-autosuggestions"]
 	path = zsh/config/oh-my-zsh/custom/plugins/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions
+	shallow = true
 [submodule "zsh/config/oh-my-zsh/custom/plugins/zsh-syntax-highlighting"]
 	path = zsh/config/oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+	shallow = true
+[submodule "zsh/config/oh-my-zsh/custom/themes/powerlevel10k"]
+	path = zsh/config/oh-my-zsh/custom/themes/powerlevel10k
+	url = https://github.com/romkatv/powerlevel10k.git
+	shallow = true
