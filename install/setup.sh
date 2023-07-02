@@ -21,6 +21,7 @@ source "$(dirname "${BASH_SOURCE[0]}")/prerequisites.sh"
 source "$(dirname "${BASH_SOURCE[0]}")/install-fonts.sh"
 source "$(dirname "${BASH_SOURCE[0]}")/install-apps.sh"
 source "$(dirname "${BASH_SOURCE[0]}")/setup-dotfiles.sh"
+source "$(dirname "${BASH_SOURCE[0]}")/post-setup.sh"
 
 info "Installing prerequisties"
 install_prerequisities
@@ -36,7 +37,7 @@ success "Tools installed"
 
 info "Setting up configurations / dotfiles (creating symbolic links to application config files)"
 setup_dotfiles
-success "Configurations (dotfiles) are set up."
+success "Configurations (dotfiles) are set up"
 
 info "Installing other tools"
 install_other_tools
@@ -52,6 +53,10 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
   echo "System configuration for Linux not supported."
 fi
-success "System configured"
+success "System configured. Note that some of these changes require a logout/restart to take effect."
+
+info "Running post-setup"
+run_post_setup_for_configured_apps
+success "Post-setup completed"
 
 success "Setup complete!"
