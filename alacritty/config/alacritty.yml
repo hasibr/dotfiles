@@ -426,8 +426,8 @@ live_config_reload: true
 # Default:
 #   - (Linux/BSD/macOS) `$SHELL` or the user's login shell, if `$SHELL` is unset
 #   - (Windows) powershell
+# Default process for a shell on macOS should use login -fp $USERNAME and not a direct invocation of /bin/bash
 shell:
-  # Default process for a shell on macOS should use login -fp $USERNAME and not a direct invocation of /bin/bash
   program: login
   args: ["-fp", "hasibr"]
 
