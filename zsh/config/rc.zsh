@@ -65,11 +65,6 @@ export NVM_DIR="$HOME/.nvm"
 #   export EDITOR='mvim'
 # fi
 
-# Enable chruby
-source $(brew --prefix)/opt/chruby/share/chruby/chruby.sh
-source $(brew --prefix)/opt/chruby/share/chruby/auto.sh
-chruby ruby-3.1.0
-
 # Add tee-clc directory to Path to enable tf command in zsh
 export PATH=$PATH:/Users/$USERNAME/.tee-clc
 
