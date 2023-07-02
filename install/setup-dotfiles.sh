@@ -3,7 +3,6 @@
 # Create symbolic links between the dotfiles in this directory to where the config files
 # for each application should be.
 
-pwd
 cd "$(dirname "$0")/.."
 DOTFILES=$(pwd -P)
 
