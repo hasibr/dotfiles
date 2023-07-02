@@ -11,9 +11,9 @@
 import:
   # Catppuccin color schemes (https://github.com/catppuccin/alacritty)
   - ~/.config/alacritty/themes/catppuccin/catppuccin-mocha.yml
-#  - ~/.config/alacritty/catppuccin/catppuccin-macchiato.yml
-#  - ~/.config/alacritty/catppuccin/catppuccin-frappe.yml
-#  - ~/.config/alacritty/catppuccin/catppuccin-latte.yml
+#  - ~/.config/alacritty/themes/catppuccin/catppuccin-macchiato.yml
+#  - ~/.config/alacritty/themes/catppuccin/catppuccin-frappe.yml
+#  - ~/.config/alacritty/themes/catppuccin/catppuccin-latte.yml
 
 # Any items in the `env` entry below will be added as
 # environment variables. Some entries may override variables
