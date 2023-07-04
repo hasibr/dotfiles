@@ -27,6 +27,7 @@ install_configured_tools() {
 }
 
 # Install asdf, a CLI tool for managing different runtime versions (node, java, etc)
+# Tool: https://asdf-vm.com/
 install_asdf() {
     # Install oh-my-zsh
     local asdf_dir="$HOME/.asdf"
@@ -39,7 +40,7 @@ install_asdf() {
         git clone https://github.com/asdf-vm/asdf.git "$asdf_dir" --branch "$asdf_version"
         source "$asdf_dir/asdf.sh"
     else
-        printf "asdf is already installed at $asdf_dir\n"
+        printf "asdf is already installed at $asdf_dir. To update it to the latest stable release, run: asdf update\n"
     fi
 }
 
@@ -65,12 +66,16 @@ asdf_add_plugin() {
 }
 
 # Install Node.js with asdf
+# Tool: https://nodejs.org/en
+# asdf plugin: https://github.com/asdf-vm/asdf-nodejs
+# Arguments:
+#   Version
 install_nodejs_asdf() {
+    local install_version="$1"
     # Check if Node.js is already installed with asdf
-    if asdf list nodejs >/dev/null 2>&1; then
+    if asdf current nodejs >/dev/null 2>&1; then
         printf "Node.js is already installed with asdf. You can check installed versions using: asdf list nodejs\n"
     else
-        local install_version="latest:18"
         printf "Installing Node.js\n"
         asdf_add_plugin "nodejs" "https://github.com/asdf-vm/asdf-nodejs.git"
         NODEJS_CHECK_SIGNATURES=no asdf install nodejs "$install_version"
@@ -81,17 +86,116 @@ install_nodejs_asdf() {
 }
 
 # Install Java (JDK) with asdf
+# Tool: https://adoptium.net/
+# asdf plugin: https://github.com/halcyon/asdf-java.git
+# Arguments:
+#   Version
 install_java_asdf() {
-    if asdf list java >/dev/null 2>&1; then
+    local install_version="$1"
+    if asdf current java >/dev/null 2>&1; then
         printf "Java is already installed with asdf. You can check installed versions using: asdf list java\n"
     else
-        local install_version="latest:adoptopenjdk-17"
         printf "Installing Java\n"
         asdf_add_plugin "java" "https://github.com/halcyon/asdf-java.git"
         asdf install java "$install_version"
         asdf global java "$install_version"
         local current_version=$(asdf current java | awk '{print $2}')
         printf "Global Java version set to: $current_version\n"
+    fi
+}
+
+# Install .NET Core SDK with asdf
+# Tool: https://github.com/dotnet/core
+# asdf plugin: https://github.com/emersonsoares/asdf-dotnet-core
+# Arguments:
+#   Version
+install_dotnet_core_asdf() {
+    local install_version="$1"
+    if asdf current dotnet-core >/dev/null 2>&1; then
+        printf ".NET Core is already installed with asdf. You can check installed versions using: asdf list dotnet-core\n"
+    else
+        printf "Installing .NET Core\n"
+        asdf_add_plugin "dotnet-core" "https://github.com/emersonsoares/asdf-dotnet-core.git"
+        asdf install dotnet-core "$install_version"
+        asdf global dotnet-core "$install_version"
+        local current_version=$(asdf current dotnet-core | awk '{print $2}')
+        printf "Global .NET Core version set to: $current_version\n"
+    fi
+}
+
+# Install Kubernetes CLI (kubectl) with asdf
+# Tool: https://kubernetes.io/docs/reference/kubectl/
+# asdf plugin: https://github.com/asdf-community/asdf-kubectl.git
+# Arguments:
+#   Version
+install_kubectl_asdf() {
+    local install_version="$1"
+    if asdf current kubectl >/dev/null 2>&1; then
+        printf "Kubectl is already installed with asdf. You can check installed versions using: asdf list kubectl\n"
+    else
+        printf "Installing Kubernetes CLI (kubectl)\n"
+        asdf_add_plugin "kubectl" "https://github.com/asdf-community/asdf-kubectl.git"
+        asdf install kubectl "$install_version"
+        asdf global kubectl "$install_version"
+        local current_version=$(asdf current kubectl | awk '{print $2}')
+        printf "Global kubectl version set to: $current_version\n"
+    fi
+}
+
+# Install Kustomize with asdf
+# Tool: https://kustomize.io/
+# asdf plugin: https://github.com/Banno/asdf-kustomize.git
+# Arguments:
+#   Version
+install_kustomize_asdf() {
+    local install_version="$1"
+    if asdf current kustomize >/dev/null 2>&1; then
+        printf "Kustomize is already installed with asdf. You can check installed versions using: asdf list kustomize\n"
+    else
+        printf "Installing Kustomize\n"
+        asdf_add_plugin "kustomize" "https://github.com/Banno/asdf-kustomize.git"
+        asdf install kustomize "$install_version"
+        asdf global kustomize "$install_version"
+        local current_version=$(asdf current kubectl | awk '{print $2}')
+        printf "Global Kustomize version set to: $current_version\n"
+    fi
+}
+
+# Install Skaffold with asdf
+# Tool: https://github.com/GoogleContainerTools/skaffold
+# asdf plugin: https://github.com/nklmilojevic/asdf-skaffold
+# Arguments:
+#   Version
+install_kustomize_asdf() {
+    local install_version="$1"
+    if asdf current kustomize >/dev/null 2>&1; then
+        printf "Kustomize is already installed with asdf. You can check installed versions using: asdf list kustomize\n"
+    else
+        printf "Installing Kustomize\n"
+        asdf_add_plugin "kustomize" "https://github.com/Banno/asdf-kustomize.git"
+        asdf install kustomize "$install_version"
+        asdf global kustomize "$install_version"
+        local current_version=$(asdf current kubectl | awk '{print $2}')
+        printf "Global Kustomize version set to: $current_version\n"
+    fi
+}
+
+# Install Terraform with asdf
+# Tool: https://github.com/hashicorp/terraform
+# asdf plugin: https://github.com/asdf-community/asdf-hashicorp.git
+# Arguments:
+#   Version
+install_terraform_asdf() {
+    local install_version="$1"
+    if asdf current terraform >/dev/null 2>&1; then
+        printf "Terraform is already installed with asdf. You can check installed versions using: asdf list terraform\n"
+    else
+        printf "Installing Terraform\n"
+        asdf_add_plugin "terraform" "https://github.com/asdf-community/asdf-hashicorp.git"
+        asdf install terraform "$install_version"
+        asdf global terraform "$install_version"
+        local current_version=$(asdf current terraform | awk '{print $2}')
+        printf "Global Terraform version set to: $current_version\n"
     fi
 }
 
@@ -107,11 +211,16 @@ install_other_tools() {
 
     # Install asdf and software tools with asdf
     install_asdf
-    install_nodejs_asdf
-    install_java_asdf
+    install_nodejs_asdf "latest:18"
+    install_java_asdf "latest:temurin-17"
+    install_dotnet_core_asdf "latest:6"
+    # install_kubectl_asdf "latest:1.23"
+    # Kustomize is blocked on releasing for windows and darwin ARM until #5220 (https://github.com/kubernetes-sigs/kustomize/issues/5220) is resolved.
+    # install_kustomize_asdf "latest"
+    # install_terraform_asdf "latest"
 }
 
-# Install applications
+# Install desktop applications
 install_other_apps() {
     brew_install_cask "istat-menus"
     brew_install_cask "alfred"

@@ -69,11 +69,17 @@ export NVM_DIR="$HOME/.nvm"
 export PATH=$PATH:$HOME/.tee-clc
 
 # asdf configuration
+# Path to the .asdfrc configuration file
+export ASDF_CONFIG_FILE="$HOME/.config/asdf/asdfrc"
 . "$HOME/.asdf/asdf.sh"
 # Append completions to fpath
 fpath=(${ASDF_DIR}/completions $fpath)
 # Initialise completions with ZSH's compinit
 autoload -Uz compinit && compinit
+# asdf plugins
+# dotnet-core (https://github.com/emersonsoares/asdf-dotnet-core)
+# Script to set DOTNET_ROOT environment variable
+. "$ASDF_DIR/plugins/dotnet-core/set-dotnet-home.zsh"
 
 # ----- Personal aliases
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
@@ -136,8 +142,5 @@ if [ -f "$HOME/mambaforge/etc/profile.d/mamba.sh" ]; then
     . "$HOME/mambaforge/etc/profile.d/mamba.sh"
 fi
 # <<< conda initialize <<<
-
-# Path to the .asdfrc configuration file
-export ASDF_CONFIG_FILE="$HOME/.config/asdf/asdfrc"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
