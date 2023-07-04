@@ -8,7 +8,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/$USERNAME/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load
 ZSH_THEME="powerlevel10k/powerlevel10k"
@@ -66,7 +66,14 @@ export NVM_DIR="$HOME/.nvm"
 # fi
 
 # Add tee-clc directory to Path to enable tf command in zsh
-export PATH=$PATH:/Users/$USERNAME/.tee-clc
+export PATH=$PATH:$HOME/.tee-clc
+
+# asdf configuration
+. "$HOME/.asdf/asdf.sh"
+# Append completions to fpath
+fpath=(${ASDF_DIR}/completions $fpath)
+# Initialise completions with ZSH's compinit
+autoload -Uz compinit && compinit
 
 # ----- Personal aliases
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
@@ -107,7 +114,7 @@ export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-export PATH="/Users/$USERNAME/.rd/bin:$PATH"
+export PATH="$HOME/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
 
 # >>> conda initialize >>>
@@ -116,18 +123,20 @@ __conda_setup="$('/Users/hasibr/mambaforge/bin/conda' 'shell.zsh' 'hook' 2> /dev
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/Users/$USERNAME/mambaforge/etc/profile.d/conda.sh" ]; then
-        . "/Users/$USERNAME/mambaforge/etc/profile.d/conda.sh"
+    if [ -f "$HOME/mambaforge/etc/profile.d/conda.sh" ]; then
+        . "$HOME/mambaforge/etc/profile.d/conda.sh"
     else
-        export PATH="/Users/$USERNAME/mambaforge/bin:$PATH"
+        export PATH="$HOME/mambaforge/bin:$PATH"
     fi
 fi
 unset __conda_setup
 
-if [ -f "/Users/$USERNAME/mambaforge/etc/profile.d/mamba.sh" ]; then
-    . "/Users/$USERNAME/mambaforge/etc/profile.d/mamba.sh"
+if [ -f "$HOME/mambaforge/etc/profile.d/mamba.sh" ]; then
+    . "$HOME/mambaforge/etc/profile.d/mamba.sh"
 fi
 # <<< conda initialize <<<
 
+# Path to the .asdfrc configuration file
+export ASDF_CONFIG_FILE="$HOME/.config/asdf/asdfrc"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

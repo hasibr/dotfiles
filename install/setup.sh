@@ -13,8 +13,9 @@ echo -e "\n░░░  ░██████╗███████╗██
 # Enable interpretation of backslash escapes
 set -e
 
+# Set DOTFILES variable for the current shell session
 cd "$(dirname "$0")/.."
-DOTFILES=$(pwd -P)
+export DOTFILES=$(pwd -P)
 
 source "$(dirname "${BASH_SOURCE[0]}")/utils.sh"
 source "$(dirname "${BASH_SOURCE[0]}")/prerequisites.sh"
@@ -47,6 +48,10 @@ info "Installing other applications"
 install_other_apps
 success "Applications installed"
 
+info "Running post-setup"
+run_post_setup_for_configured_apps
+success "Post-setup completed"
+
 info "Configuring system"
 if [[ "$OSTYPE" == "darwin"* ]]; then
   source "$(dirname "${BASH_SOURCE[0]}")/configure-system-macos.sh"
@@ -54,9 +59,5 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
   echo "System configuration for Linux not supported."
 fi
 success "System configured. Note that some of these changes require a logout/restart to take effect."
-
-info "Running post-setup"
-run_post_setup_for_configured_apps
-success "Post-setup completed"
 
 success "Setup complete!"

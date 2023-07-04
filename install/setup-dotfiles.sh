@@ -3,9 +3,6 @@
 # Create symbolic links between the dotfiles in this directory to where the config files
 # for each application should be.
 
-cd "$(dirname "$0")/.."
-DOTFILES=$(pwd -P)
-
 link_file () {
   local src=$1 dst=$2
   printf "\rCreating symbolic link.\n  source: $src\n  destination: $dst\n"
@@ -127,6 +124,14 @@ install_dotfiles () {
       # Forcefully expand the entire path
       eval "src=$src"
       eval "dst=$dst"
+
+      # Check if the src path is a file (ie. it is not a directory). If it is a file, we need to create
+      # the directory that the file will live in before creating the symlink.
+      if ! directory_exists "$src"; then
+          # Create the directory for the file
+          local dst_directory=$(dirname "$dst")
+          mkdir -p "$dst_directory"
+      fi
 
       # Create symbolic links from src to dst
       link_file "$src" "$dst"

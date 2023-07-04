@@ -5,11 +5,11 @@ alias dc=docker-compose
 alias dkill="pgrep \"Docker\" | xargs kill -9"
 alias hcat='highlight -O ansi'
 
-alias v='nvim -w ~/.vimlog "$@"'
+# alias v='nvim -w ~/.vimlog "$@"'
 alias vi='nvim -w ~/.vimlog "$@"'
 alias vim='nvim -w ~/.vimlog "$@"'
 
-alias zn='vim $NOTES_DIR/$(date +"%Y%m%d%H%M.md")'
+# alias zn='vim $NOTES_DIR/$(date +"%Y%m%d%H%M.md")'
 
 alias ta='tmux attach -t'
 
@@ -18,13 +18,16 @@ alias ls=exa
 alias sl=exa
 alias c='clear'
 alias s='source ~/.zshrc'
-alias h=heroku
 alias jj='pbpaste | jsonpp | pbcopy'
-alias rm=trash
 alias trim="awk '{\$1=\$1;print}'"
 
+# awsp, AWS profile switcher. https://github.com/johnnyopao/awsp
+alias awsp="source _awsp"
 
 # GIT ALIASES -----------------------------------------------------------------
+# Lazygit, simple terminal UI for git commands. https://github.com/jesseduffield/lazygit
+alias lg='CONFIG_DIR="$HOME/.config/lazygit" lazygit'
+
 alias gc='git commit'
 alias gco='git checkout'
 alias ga='git add'
@@ -98,8 +101,6 @@ mff ()
     gco $curr_branch
 }
 
-
-
 JOBFILE="$DOTFILES/job-specific.sh"
 if [ -f "$JOBFILE" ]; then
     source "$JOBFILE"
@@ -128,9 +129,6 @@ extract-audio-and-video () {
     ffmpeg -i "$1" -c:v copy obs-video.mp4
 }
 
-alias epdir='cd `epdir.sh`'
-
-
 hs () {
  curl https://httpstat.us/$1
 }
@@ -145,7 +143,3 @@ copy-line () {
 open-at-line () {
   vim $(rg --line-number "${1:-.}" | sk --delimiter ':' --preview 'bat --color=always --highlight-line {2} {1}' | awk -F ':' '{print "+"$2" "$1}')
 }
-
-alias ledger='ledger -f "$(find $NOTES_DIR -name transactions.ledger)"'
-
-alias yip='yarn install --pure-lockfile'
