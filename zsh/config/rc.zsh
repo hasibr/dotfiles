@@ -7,35 +7,45 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# Path to your oh-my-zsh installation.
+# Path to oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
-
 # Set name of the theme to load
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
-# Uncomment one of the following lines to change the auto-update behavior
+source_if_exists () {
+    if test -r "$1"; then
+        source "$1"
+    fi
+}
+
+# Powerlevel10k prompt. To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+source_if_exists "$HOME/.p10k.zsh"
+# Custom ZSH configuration that will not be checked into source control
+source_if_exists "$HOME/.env.sh"
+# oh-my-zsh history
+source_if_exists "$DOTFILES/zsh/config/history.zsh"
+# Git utility functions (e.g. pretty git log)
+source_if_exists "$DOTFILES/zsh/config/git.zsh"
+# fzf, command-line fuzzy finder
+source_if_exists "~/.fzf.zsh"
+# asdf executable
+export ASDF_CONFIG_FILE="$HOME/.config/asdf/asdfrc"
+source_if_exists "$HOME/.asdf/asdf.sh"
+source_if_exists "/usr/local/etc/profile.d/z.sh"
+source_if_exists "/opt/homebrew/etc/profile.d/z.sh"
+
+# asdf auto-completions
+# Append completions to fpath
+fpath=(${ASDF_DIR}/completions $fpath)
+# Initialise completions with ZSH's compinit
+autoload -Uz compinit && compinit
+
+# oh-my-zsh auto-update behavior
 # zstyle ':omz:update' mode disabled  # disable automatic updates
 # zstyle ':omz:update' mode auto      # update automatically without asking
-# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
-
+zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 # Uncomment the following line to change how often to auto-update (in days).
 # zstyle ':omz:update' frequency 13
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
@@ -49,7 +59,7 @@ plugins=(
     z
 )
 
-source $ZSH/oh-my-zsh.sh
+source_if_exists "$ZSH/oh-my-zsh.sh"
 
 # ---------- User configurations ----------
 
@@ -60,17 +70,19 @@ source $ZSH/oh-my-zsh.sh
 #   export EDITOR='mvim'
 # fi
 
-# Add tee-clc directory to Path to enable tf command in zsh
-export PATH=$PATH:$HOME/.tee-clc
+export VISUAL=nvim
+export EDITOR=nvim
+
+# Path
+# Add tee-clc directory to enable "tf" command
+export PATH="$PATH:$HOME/.tee-clc"
+# Add Rancher Desktop to path
+export PATH="$PATH:$HOME/.rd/bin"
 
 # asdf configuration
 # Path to the .asdfrc configuration file
 export ASDF_CONFIG_FILE="$HOME/.config/asdf/asdfrc"
-. "$HOME/.asdf/asdf.sh"
-# Append completions to fpath
-fpath=(${ASDF_DIR}/completions $fpath)
-# Initialise completions with ZSH's compinit
-autoload -Uz compinit && compinit
+
 # asdf plugins
 # dotnet-core (https://github.com/emersonsoares/asdf-dotnet-core)
 # Script to set DOTNET_ROOT environment variable
@@ -81,38 +93,10 @@ autoload -Uz compinit && compinit
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-# Alias for vim - use nvim instead
-alias vim="nvim"
-
-# Alias for lazygit
-alias lg='CONFIG_DIR="$HOME/.config/lazygit" lazygit'
-
-# Aliases for exa - replacements for ls and la. Tree view: lt <depth> (default is 1)
-if [ -x "$(command -v exa)" ]; then
-    alias ls="exa --icons --grid"
-    alias la="exa --long --header --all --group --icons --grid"
-    lt() { exa -alhT --icons --grid --git -I'.git|node_modules|.mypy_cache|.pytest_cache|.venv' --color=always "-L${1:-1}" | less -R }
-fi
-
-# Alias for awsp - aws profile switcher: https://github.com/johnnyopao/awsp
-# __awsp is a custom wrapper around the original _awsp executable
-alias awsp="source $HOME/__awsp"
-
+source_if_exists "$DOTFILES/zsh/config/aliases.zsh"
 # -----
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-# -----
-
-### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-export PATH="$HOME/.rd/bin:$PATH"
-### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+# ----- Section below is managed by other applications
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -132,5 +116,3 @@ if [ -f "$HOME/mambaforge/etc/profile.d/mamba.sh" ]; then
     . "$HOME/mambaforge/etc/profile.d/mamba.sh"
 fi
 # <<< conda initialize <<<
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

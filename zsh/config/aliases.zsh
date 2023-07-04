@@ -1,3 +1,13 @@
+# ----- Personal aliases
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+
 # ALIASES ---------------------------------------------------------------------
 alias unmount_all_and_exit='unmount_all && exit'
 alias d=docker
@@ -11,18 +21,24 @@ alias vim='nvim -w ~/.vimlog "$@"'
 
 # alias zn='vim $NOTES_DIR/$(date +"%Y%m%d%H%M.md")'
 
+# Aliases for tmux
 alias ta='tmux attach -t'
 
-alias l='exa -lah'
-alias ls=exa
-alias sl=exa
+# Aliases for exa - replacements for ls and la.
+# Tree view: lt <depth> (default is 1)
+if [ -x "$(command -v exa)" ]; then
+    alias ls="exa --long --icons"
+    alias la="exa --long --header --all --group --icons"
+    lt() { exa -alhT --icons --grid --git -I'.git|node_modules|.mypy_cache|.pytest_cache|.venv' --color=always "-L${1:-1}" | less -R }
+fi
 alias c='clear'
 alias s='source ~/.zshrc'
 alias jj='pbpaste | jsonpp | pbcopy'
 alias trim="awk '{\$1=\$1;print}'"
 
-# awsp, AWS profile switcher. https://github.com/johnnyopao/awsp
-alias awsp="source _awsp"
+# awsp - aws profile switcher: https://github.com/johnnyopao/awsp
+# __awsp is a custom wrapper around the original _awsp executable
+alias awsp="source $HOME/__awsp"
 
 # GIT ALIASES -----------------------------------------------------------------
 # Lazygit, simple terminal UI for git commands. https://github.com/jesseduffield/lazygit
