@@ -5,4 +5,3 @@ $DOTFILES/zsh/config/oh-my-zsh/custom/plugins/zsh-autosuggestions=${ZSH_CUSTOM:-
 $DOTFILES/zsh/config/oh-my-zsh/custom/plugins/zsh-syntax-highlighting=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 $DOTFILES/zsh/config/p10k.zsh=$HOME/.p10k.zsh
 $DOTFILES/zsh/config/awsp.sh=$HOME/__awsp
-
