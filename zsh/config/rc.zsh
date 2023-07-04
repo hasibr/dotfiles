@@ -101,7 +101,7 @@ fi
 
 # Alias for awsp - aws profile switcher: https://github.com/johnnyopao/awsp
 # __awsp is a custom wrapper around the original _awsp executable
-alias awsp="source __awsp"
+alias awsp="source $HOME/__awsp"
 
 # -----
 

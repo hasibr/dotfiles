@@ -199,6 +199,21 @@ install_terraform_asdf() {
     fi
 }
 
+# Install an Npm package globally.
+# Arguments:
+#   Package name
+install_npm_package_globally() {
+    local package="$1"
+    # Check if package is installed globally
+    if npm list -g "$package" &> /dev/null; then
+        printf "Npm package $package is already installed globally.\n"
+    else
+        # Install package globally
+        npm install -g "$package"
+        printf "Npm package $package has been installed globally.\n"
+    fi
+}
+
 # Install other tools
 install_other_tools() {
     # jq, a lightweight command-line JSON processor
@@ -218,6 +233,9 @@ install_other_tools() {
     # Kustomize is blocked on releasing for windows and darwin ARM until #5220 (https://github.com/kubernetes-sigs/kustomize/issues/5220) is resolved.
     # install_kustomize_asdf "latest"
     # install_terraform_asdf "latest"
+
+    # Install awsp (AWS profile switcher) tool: https://github.com/johnnyopao/awsp
+    install_npm_package_globally "awsp"
 }
 
 # Install desktop applications
