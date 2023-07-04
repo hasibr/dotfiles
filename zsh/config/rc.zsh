@@ -99,7 +99,8 @@ if [ -x "$(command -v exa)" ]; then
 fi
 
 # Alias for awsp - aws profile switcher: https://github.com/johnnyopao/awsp
-alias awsp="source _awsp"
+# __awsp is a custom wrapper around the original _awsp executable
+alias awsp="source __awsp"
 
 # -----
 
