@@ -20,9 +20,8 @@ install_configured_tools() {
         fi
 
         printf "Installing $folder_name\n"
-        # Make install script executable
+        # Make install script executable and run
         chmod +x "$app_install_file_path"
-        # Run install script
         "$app_install_file_path"
     done
 }
@@ -67,24 +66,33 @@ asdf_add_plugin() {
 
 # Install Node.js with asdf
 install_nodejs_asdf() {
-    printf "Installing Node.js\n"
-    asdf_add_plugin "nodejs" "https://github.com/asdf-vm/asdf-nodejs.git"
-    NODEJS_CHECK_SIGNATURES=no asdf install nodejs latest:18
-    asdf global nodejs latest:18
-    local current_version=$(asdf current nodejs | awk '{print $2}')
-    printf "Global Node.js version set to: $current_version\n"
-    printf "%s\n" "Note: if you have multiple versions of Node.js installed, you may uninstall them manually using:" "asdf list nodejs" "asdf uninstall nodejs <version>"
+    # Check if Node.js is already installed with asdf
+    if asdf list nodejs >/dev/null 2>&1; then
+        printf "Node.js is already installed with asdf. You can check installed versions using: asdf list nodejs\n"
+    else
+        local install_version="latest:18"
+        printf "Installing Node.js\n"
+        asdf_add_plugin "nodejs" "https://github.com/asdf-vm/asdf-nodejs.git"
+        NODEJS_CHECK_SIGNATURES=no asdf install nodejs "$install_version"
+        asdf global nodejs "$install_version"
+        local current_version=$(asdf current nodejs | awk '{print $2}')
+        printf "Global Node.js version set to: $current_version\n"
+    fi
 }
 
-# Install java (JDK) with asdf
+# Install Java (JDK) with asdf
 install_java_asdf() {
-    printf "Installing Java\n"
-    asdf_add_plugin "java" "https://github.com/halcyon/asdf-java.git"
-    asdf install java latest:adoptopenjdk-17
-    asdf global java latest:adoptopenjdk-17
-    local current_version=$(asdf current java | awk '{print $2}')
-    printf "Global Java version set to: $current_version\n"
-    printf "%s\n" "Note: if you have multiple versions of Java installed, you may uninstall them manually using:" "asdf list java" "asdf uninstall java <version>"
+    if asdf list java >/dev/null 2>&1; then
+        printf "Java is already installed with asdf. You can check installed versions using: asdf list java\n"
+    else
+        local install_version="latest:adoptopenjdk-17"
+        printf "Installing Java\n"
+        asdf_add_plugin "java" "https://github.com/halcyon/asdf-java.git"
+        asdf install java "$install_version"
+        asdf global java "$install_version"
+        local current_version=$(asdf current java | awk '{print $2}')
+        printf "Global Java version set to: $current_version\n"
+    fi
 }
 
 # Install other tools
@@ -97,6 +105,7 @@ install_other_tools() {
     # exa, a replacement for ls
     brew_install "exa"
 
+    # Install asdf and software tools with asdf
     install_asdf
     install_nodejs_asdf
     install_java_asdf
