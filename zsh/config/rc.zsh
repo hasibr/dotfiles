@@ -53,11 +53,6 @@ source $ZSH/oh-my-zsh.sh
 
 # ---------- User configurations ----------
 
-# nvm configuration (for managing multiple Node versions)
-export NVM_DIR="$HOME/.nvm"
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
@@ -114,11 +109,6 @@ alias awsp="source __awsp"
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # -----
-
-# SDKMAN - tool for managing parallel versions of multiple SDKs
-# THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
 export PATH="$HOME/.rd/bin:$PATH"
