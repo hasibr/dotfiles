@@ -17,12 +17,12 @@ set -e
 cd "$(dirname "$0")/.."
 export DOTFILES=$(pwd -P)
 
-source "$(dirname "${BASH_SOURCE[0]}")/utils.sh"
-source "$(dirname "${BASH_SOURCE[0]}")/prerequisites.sh"
-source "$(dirname "${BASH_SOURCE[0]}")/install-fonts.sh"
-source "$(dirname "${BASH_SOURCE[0]}")/install-apps.sh"
-source "$(dirname "${BASH_SOURCE[0]}")/setup-dotfiles.sh"
-source "$(dirname "${BASH_SOURCE[0]}")/post-setup.sh"
+source "$DOTFILES/install/utils.sh"
+source "$DOTFILES/install/prerequisites.sh"
+source "$DOTFILES/install/install-fonts.sh"
+source "$DOTFILES/install/install-apps.sh"
+source "$DOTFILES/install/setup-dotfiles.sh"
+source "$DOTFILES/install/post-setup.sh"
 
 info "Installing prerequisties"
 install_prerequisities
@@ -53,9 +53,9 @@ run_post_setup_for_configured_apps
 success "Post-setup completed"
 
 info "Configuring system"
-if [[ "$OSTYPE" == "darwin"* ]]; then
+if [ "$(uname)" == "Darwin" ]; then
   source "$(dirname "${BASH_SOURCE[0]}")/configure-system-macos.sh"
-elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
+elif [ "$(uname)" == "Linux" ]; then
   echo "System configuration for Linux not supported."
 fi
 success "System configured. Note that some of these changes require a logout/restart to take effect."
