@@ -15,7 +15,6 @@ alias dc=docker-compose
 alias dkill="pgrep \"Docker\" | xargs kill -9"
 alias hcat='highlight -O ansi'
 
-# alias v='nvim -w ~/.vimlog "$@"'
 alias vi='nvim -w ~/.vimlog "$@"'
 alias vim='nvim -w ~/.vimlog "$@"'
 
@@ -23,6 +22,7 @@ alias vim='nvim -w ~/.vimlog "$@"'
 
 # Aliases for tmux
 alias ta='tmux attach -t'
+alias tks='tmux kill-session -t'
 
 # Aliases for exa - replacements for ls and la.
 # Tree view: lt <depth> (default is 1)
