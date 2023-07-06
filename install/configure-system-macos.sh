@@ -31,8 +31,8 @@ sudo nvram SystemAudioVolume=" "
 # # Set highlight color to green
 # defaults write NSGlobalDomain AppleHighlightColor -string "0.764700 0.976500 0.568600"
 
-# # Set sidebar icon size to medium
-# defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 2
+# Set sidebar icon size to medium
+defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 2
 
 # # Always show scrollbars
 # defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
@@ -59,8 +59,8 @@ sudo nvram SystemAudioVolume=" "
 # defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
 # defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
 
-# # Save to disk (not to iCloud) by default
-# defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
+# Save to disk (not to iCloud) by default
+defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 
 # # Automatically quit printer app once the print jobs complete
 # defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
@@ -324,10 +324,10 @@ defaults write com.apple.finder OpenWindowForNewRemovableDisk -bool true
 /usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:gridSpacing 100" ~/Library/Preferences/com.apple.finder.plist
 /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:gridSpacing 100" ~/Library/Preferences/com.apple.finder.plist
 
-# # Increase the size of icons on the desktop and in other icon views
-/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:iconSize 80" ~/Library/Preferences/com.apple.finder.plist
-/usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:iconSize 80" ~/Library/Preferences/com.apple.finder.plist
-/usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:iconSize 80" ~/Library/Preferences/com.apple.finder.plist
+# Set the size of icons on the desktop and in other icon views
+/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:iconSize 60" ~/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:iconSize 60" ~/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:iconSize 60" ~/Library/Preferences/com.apple.finder.plist
 
 # Use list view in all Finder windows by default
 # Four-letter codes for the other view modes: `icnv`, `clmv`, `glyv`
@@ -929,27 +929,27 @@ defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
 # # Kill affected applications                                                  #
 # ###############################################################################
 
-# for app in "Activity Monitor" \
-# 	"Address Book" \
-# 	"Calendar" \
-# 	"cfprefsd" \
-# 	"Contacts" \
-# 	"Dock" \
-# 	"Finder" \
-# 	"Google Chrome Canary" \
-# 	"Google Chrome" \
-# 	"Mail" \
-# 	"Messages" \
-# 	"Opera" \
-# 	"Photos" \
-# 	"Safari" \
-# 	"SizeUp" \
-# 	"Spectacle" \
-# 	"SystemUIServer" \
-# 	"Terminal" \
-# 	"Transmission" \
-# 	"Tweetbot" \
-# 	"Twitter" \
-# 	"iCal"; do
-# 	killall "${app}" &> /dev/null
-# done
+for app in "Activity Monitor" \
+	"Address Book" \
+	"Calendar" \
+	"cfprefsd" \
+	"Contacts" \
+	"Dock" \
+	"Finder" \
+	# "Google Chrome Canary" \
+	# "Google Chrome" \
+	"Mail" \
+	"Messages" \
+	# "Opera" \
+	"Photos" \
+	"Safari" \
+	"SizeUp" \
+	"Spectacle" \
+	"SystemUIServer" \
+	# "Terminal" \
+	# "Transmission" \
+	# "Tweetbot" \
+	# "Twitter" \
+	"iCal"; do
+	killall "${app}" &> /dev/null
+done
