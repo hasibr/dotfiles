@@ -1,10 +1,17 @@
-# Always rebase when pulling (git pull --rebase)
 [pull]
+	# Always rebase when pulling (git pull --rebase)
     rebase = true
 [init]
+	# Always init a new Git repository with "main" as the default branch
     defaultBranch = main
 [core]
 	editor = vi
 	excludesfile = ~/.gitignore_global
 [user]
 	name = Hasib Rahman
+[url "git@github.com:"]
+	# Use ssh url instead of https url when accessing Github repository
+	insteadOf = https://github.com/
+[url "git@gitlab.com:"]
+	# Use ssh url instead of https url when accessing Gitlab repository
+	insteadOf = https://gitlab.com/
