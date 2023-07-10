@@ -73,12 +73,6 @@ source_if_exists "$ZSH/oh-my-zsh.sh"
 export VISUAL=nvim
 export EDITOR=nvim
 
-# Path
-# Add tee-clc directory to enable "tf" command
-export PATH="$PATH:$HOME/.tee-clc"
-# Add Rancher Desktop to path
-export PATH="$PATH:$HOME/.rd/bin"
-
 # asdf configuration
 # Path to the .asdfrc configuration file
 export ASDF_CONFIG_FILE="$HOME/.config/asdf/asdfrc"
@@ -90,6 +84,14 @@ export ASDF_CONFIG_FILE="$HOME/.config/asdf/asdfrc"
 # Go (https://github.com/kennyp/asdf-golang)
 # Script to set GOROOT variable
 # . "$ASDF_DIR/plugins/golang/set-env.zsh"
+
+# Path
+# Add tee-clc directory to enable "tf" command
+export PATH="$PATH:$HOME/.tee-clc"
+# Add Rancher Desktop to path
+export PATH="$PATH:$HOME/.rd/bin"
+# Add GOPATH ("$ASDF_DIR/installs/golang/<version>/packages/bin") to the path
+# export PATH="$PATH:$(go env GOPATH)/bin"
 
 # ----- Personal aliases
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
