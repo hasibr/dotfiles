@@ -104,6 +104,25 @@ install_java_asdf() {
     fi
 }
 
+# Install Go with asdf
+# Tool: https://go.dev/
+# asdf plugin: https://github.com/kennyp/asdf-golang
+# Arguments:
+#   Version
+install_go_asdf() {
+    local install_version="$1"
+    if asdf current golang >/dev/null 2>&1; then
+        printf "Go is already installed with asdf. You can check installed versions using: asdf list golang\n"
+    else
+        printf "Installing Go\n"
+        asdf_add_plugin "golang" "https://github.com/kennyp/asdf-golang.git"
+        asdf install golang "$install_version"
+        asdf global golang "$install_version"
+        local current_version=$(asdf current golang | awk '{print $2}')
+        printf "Global Go version set to: $current_version\n"
+    fi
+}
+
 # Install .NET Core SDK with asdf
 # Tool: https://github.com/dotnet/core
 # asdf plugin: https://github.com/emersonsoares/asdf-dotnet-core
@@ -228,6 +247,7 @@ install_other_tools() {
     install_asdf
     install_nodejs_asdf "latest:18"
     install_java_asdf "latest:temurin-17"
+    # install_go_asdf "latest"
     install_dotnet_core_asdf "latest:6"
     # install_kubectl_asdf "latest:1.23"
     # Kustomize is blocked on releasing for windows and darwin ARM until #5220 (https://github.com/kubernetes-sigs/kustomize/issues/5220) is resolved.
