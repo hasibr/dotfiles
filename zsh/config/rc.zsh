@@ -90,6 +90,8 @@ export ASDF_CONFIG_FILE="$HOME/.config/asdf/asdfrc"
 export PATH="$PATH:$HOME/.tee-clc"
 # Add Rancher Desktop to path
 export PATH="$PATH:$HOME/.rd/bin"
+# Add dotnet tools directory to path
+export PATH="$PATH:$HOME/.dotnet/tools"
 # Add GOPATH ("$ASDF_DIR/installs/golang/<version>/packages/bin") to the path
 # export PATH="$PATH:$(go env GOPATH)/bin"
 
