@@ -185,17 +185,17 @@ install_kustomize_asdf() {
 # asdf plugin: https://github.com/nklmilojevic/asdf-skaffold
 # Arguments:
 #   Version
-install_kustomize_asdf() {
+install_skaffold_asdf() {
     local install_version="$1"
-    if asdf current kustomize >/dev/null 2>&1; then
-        printf "Kustomize is already installed with asdf. You can check installed versions using: asdf list kustomize\n"
+    if asdf current skaffold >/dev/null 2>&1; then
+        printf "Skaffold is already installed with asdf. You can check installed versions using: asdf list skaffold\n"
     else
-        printf "Installing Kustomize\n"
-        asdf_add_plugin "kustomize" "https://github.com/Banno/asdf-kustomize.git"
-        asdf install kustomize "$install_version"
-        asdf global kustomize "$install_version"
+        printf "Installing Skaffold\n"
+        asdf_add_plugin "skaffold" "https://github.com/nklmilojevic/asdf-skaffold.git"
+        asdf install skaffold "$install_version"
+        asdf global skaffold "$install_version"
         local current_version=$(asdf current kubectl | awk '{print $2}')
-        printf "Global Kustomize version set to: $current_version\n"
+        printf "Global Skaffold version set to: $current_version\n"
     fi
 }
 
@@ -249,7 +249,7 @@ install_other_tools() {
     install_java_asdf "latest:temurin-17"
     # install_go_asdf "latest"
     install_dotnet_core_asdf "latest:6"
-    # install_kubectl_asdf "latest:1.23"
+    # install_kubectl_asdf "latest:1.26"
     # Kustomize is blocked on releasing for windows and darwin ARM until #5220 (https://github.com/kubernetes-sigs/kustomize/issues/5220) is resolved.
     # install_kustomize_asdf "latest"
     # install_terraform_asdf "latest"
