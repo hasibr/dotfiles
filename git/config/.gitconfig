@@ -9,9 +9,10 @@
 	excludesfile = ~/.gitignore_global
 [user]
 	name = Hasib Rahman
-[url "git@github.com:"]
-	# Use ssh url instead of https url when accessing Github repository
-	insteadOf = https://github.com/
+# Using ssh instead of https causes issues running "brew update" since the taps (brew tap-info --installed) use HTTPs urls
+# [url "git@github.com:"]
+# 	# Use ssh url instead of https url when accessing Github repository
+# 	insteadOf = https://github.com/
 [url "git@gitlab.com:"]
 	# Use ssh url instead of https url when accessing Gitlab repository
 	insteadOf = https://gitlab.com/
