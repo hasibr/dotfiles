@@ -37,6 +37,12 @@ shell:
 
     The `--init` flag initializes any new submodules that might have been added, and the `--recursive` flag ensures that nested submodules are also updated.
 
+    After the first time setup, you can update the submodules to the latest versions with the following:
+
+    ```sh
+    git submodule update --recursive
+    ```
+
 3. Run the installation script (`setup.sh`).
 
     ```sh
