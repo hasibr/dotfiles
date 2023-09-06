@@ -8,6 +8,7 @@
 - [Installation](#installation)
 - [Footnotes](#footnotes)
   - [Local ZSH Config](#local-zsh-config)
+  - [Updating Submodules](#updating-submodules)
 
 ## Prerequisites
 
@@ -37,12 +38,6 @@ shell:
 
     The `--init` flag initializes any new submodules that might have been added, and the `--recursive` flag ensures that nested submodules are also updated.
 
-    After the first time setup, you can update the submodules to the latest versions with the following:
-
-    ```sh
-    git submodule update --recursive
-    ```
-
 3. Run the installation script (`setup.sh`).
 
     ```sh
@@ -57,4 +52,22 @@ shell:
 If there's customization you want ZSH to load on startup that is specific to 
 this machine (stuff you don't want to commit into the repo), create `~/.env.sh`
 and put it in there. It will be loaded near the top of `.zshrc`.
+
+### Updating Submodules
+
+After the first time setup, you can update the submodules to the latest versions with the following:
+
+```sh
+git submodule update --recursive --remote
+```
+
+Commit the submodule changes to this repository.
+
+Clear the Neovim local caches to have all the packages reinstalled on Neovim startup for a working Neovim config.
+
+```sh
+rm -rf ~/.local/share/nvim \
+  && rm -rf ~/.cache/nvim \
+  && nvim
+```
 
