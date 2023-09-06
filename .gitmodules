@@ -6,10 +6,6 @@
 	path = tmux/config/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
 	shallow = true
-[submodule "nvim/config"]
-	path = nvim/config
-	url = https://github.com/hasibr/NvChad.git
-	shallow = true
 [submodule "zsh/config/oh-my-zsh/custom/plugins/zsh-autosuggestions"]
 	path = zsh/config/oh-my-zsh/custom/plugins/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions
