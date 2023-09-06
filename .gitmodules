@@ -18,3 +18,7 @@
 	path = zsh/config/oh-my-zsh/custom/themes/powerlevel10k
 	url = https://github.com/romkatv/powerlevel10k.git
 	shallow = true
+[submodule "nvim/config"]
+	path = nvim/config
+	url = https://github.com/hasibr/NvChad.git
+	branch = v2.0
