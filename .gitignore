@@ -13,3 +13,7 @@
 ehthumbs.db
 Icon?
 Thumbs.db
+
+# Ignore plugins installed with tpm, except tpm itself
+tmux/config/plugins/*
+!tmux/config/plugins/tpm
