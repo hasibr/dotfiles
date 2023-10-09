@@ -1,7 +1,5 @@
 # Dotfiles
 
-
-
 ## Table of Contents
 
 - [Prerequisites](#prerequisites)
@@ -12,8 +10,9 @@
 
 ## Prerequisites
 
-Update the shell entry with your username (`echo $USERNAME` to print your username).
+In the Alacritty terminal config, update the shell process to use the login process with your username as the second arg (`echo $USERNAME` to print your username).
 
+`alacritty/config/alacritty.yml`:
 ```yaml
 shell:
   # Default process for a shell on macOS should use login -fp $USERNAME and not a direct invocation of /bin/bash
