@@ -4,7 +4,7 @@
 
 #######################################
 # Run a post-setup script for each tool listed as folders in the root directory.
-# If the folder has a post-setup.sh shell script, run the script. Otherwise,
+# If the folder has a post_setup.sh shell script, run the script. Otherwise,
 # skip it.
 # Arguments:
 #   None
@@ -12,7 +12,7 @@
 #   0 if the post-setup for each tool completed successfully, non-zero on error.
 #######################################
 run_post_setup_for_tools_in_root_directory() {
-  local post_setup_script="post-setup.sh"
+  local post_setup_script="post_setup.sh"
   local skip_folders=("bin" "install" "scripts")
 
   # Find folders in dotfiles directory with a post-setup.sh file (returns list of paths)
