@@ -104,11 +104,11 @@ is_installed_with_brew() {
 #######################################
 brew_install() {
   if is_installed_with_brew "$1"; then
-    echo "$1 is already installed.\n"
+    echo "$1 is already installed."
   else
-    echo "Installing $1...\n"
+    echo "Installing $1..."
     brew install $1
-    echo "Installed $1\n"
+    echo "Installed $1"
   fi
 }
 
@@ -121,10 +121,10 @@ brew_install() {
 #######################################
 brew_uninstall() {
   if is_installed_with_brew "$1"; then
-    printf "Uninstalling $1\n"
+    printf "Uninstalling $1"
     brew uninstall $1
   else
-    printf "$1 is not installed using Homebrew.\n"
+    printf "$1 is not installed using Homebrew."
   fi
 }
 
@@ -137,11 +137,11 @@ brew_uninstall() {
 #######################################
 brew_install_cask() {
   if is_installed_with_brew "$1"; then
-    echo "$1 is already installed.\n"
+    echo "$1 is already installed."
   else
-    echo "Installing $1...\n"
+    echo "Installing $1..."
     brew install --cask $1
-    echo "Installed $1\n"
+    echo "Installed $1"
   fi
 }
 
@@ -154,9 +154,9 @@ brew_install_cask() {
 #######################################
 brew_uninstall_cask() {
   if is_installed_with_brew "$1"; then
-    printf "Uninstalling $1\n"
+    printf "Uninstalling $1"
     brew uninstall --cask $1
   else
-    printf "$1 is not installed using Homebrew.\n"
+    printf "$1 is not installed using Homebrew."
   fi
 }
