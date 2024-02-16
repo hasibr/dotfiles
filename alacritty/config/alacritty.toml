@@ -1,0 +1,204 @@
+# Configuration for Alacritty, the GPU enhanced terminal emulator.
+
+# Import additional configuration files
+# Imports are loaded in order, skipping all missing files, with the importing
+# file being loaded last. If a field is already present in a previous import, it
+# will be replaced.
+# All imports must either be absolute paths starting with `/`, or paths relative
+# to the user's home directory starting with `~/`.
+
+# Catppuccin color schemes (https://github.com/catppuccin/alacritty)
+import = ["~/.config/alacritty/themes/catppuccin/catppuccin-mocha.toml"]
+# import = ["~/.config/alacritty/themes/catppuccin/catppuccin-mocha.toml"]
+# import = ["~/.config/alacritty/themes/catppuccin/catppuccin-mocha.toml"]
+# import = ["~/.config/alacritty/themes/catppuccin/catppuccin-mocha.toml"]
+
+# Live config reload (changes require restart)
+live_config_reload = true
+
+[colors]
+# If `true`, bold text is drawn using the bright color variants.
+draw_bold_text_with_bright_colors = true
+
+[cursor]
+# If this is `true`, the cursor will be rendered as a hollow box when the
+# window is not focused.
+unfocused_hollow = true
+
+# Cursor style
+[cursor.style]
+# Cursor shape
+# Values for `shape`:
+#   - ▇ Block
+#   - _ Underline
+#   - | Beam
+shape = "Block"
+
+[env]
+# TERM variable
+# This value is used to set the `$TERM` environment variable for
+# each instance of Alacritty. If it is not present, alacritty will
+# check the local terminfo database and use `alacritty` if it is
+# available, otherwise `xterm-256color` is used.
+TERM = "xterm-256color"
+
+# Font configuration
+# Point size
+[font]
+size = 15.0
+
+# Bold font face
+[font.bold]
+family = "JetBrainsMono Nerd Font"
+style = "Bold"
+
+# Bold italic font face
+[font.bold_italic]
+family = "JetBrainsMono Nerd Font"
+style = "Bold Italic"
+
+# Italic font face
+[font.italic]
+family = "JetBrainsMono Nerd Font"
+style = "Italic"
+
+# Normal (roman) font face
+[font.normal]
+family = "JetBrainsMono Nerd Font"
+style = "Regular"
+
+# Reset font size to default (Command + 0)
+[[keyboard.bindings]]
+action = "ResetFontSize"
+key = "Key0"
+mods = "Command"
+
+# Increase font size (Command + + key)
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "Plus"
+mods = "Command"
+
+# Increase font size (Command + + in numpad key)
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "NumpadAdd"
+mods = "Command"
+
+# Decrease font size (Command + - key)
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "Minus"
+mods = "Command"
+
+# Decrease font size (Command + - in numpad key)
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "NumpadSubtract"
+mods = "Command"
+
+# Paste (Command + V)
+[[keyboard.bindings]]
+action = "Paste"
+key = "V"
+mods = "Command"
+
+# Copy selection (Command + C)
+[[keyboard.bindings]]
+action = "Copy"
+key = "C"
+mods = "Command"
+
+# Delete word (Option + delete key)
+[[keyboard.bindings]]
+chars = "\u001B\u007F"
+key = "Back"
+mods = "Alt"
+
+# Delete line (Command + delete key)
+[[keyboard.bindings]]
+chars = "\u0015"
+key = "Back"
+mods = "Command"
+
+# Move cursor one word left (Option + left key)
+[[keyboard.bindings]]
+chars = "\u001Bb"
+key = "Left"
+mods = "Alt"
+
+# Move cursor one word right (Option + right key)
+[[keyboard.bindings]]
+chars = "\u001Bf"
+key = "Right"
+mods = "Alt"
+
+# Move cursor to Home (Command + left key)
+[[keyboard.bindings]]
+chars = "\u001BOH"
+key = "Left"
+mode = "AppCursor"
+mods = "Command"
+
+# Move cursor to End (Command + right key)
+[[keyboard.bindings]]
+chars = "\u001BOF"
+key = "Right"
+mode = "AppCursor"
+mods = "Command"
+
+[scrolling]
+# Maximum number of lines in the scrollback buffer.
+# Specifying '0' will disable scrolling.
+history = 10000
+# Scrolling distance multiplier.
+multiplier = 10
+
+[selection]
+# When set to `true`, selected text will be copied to the primary clipboard.
+save_to_clipboard = true
+# This string contains all characters that are used as separators for
+# "semantic words" in Alacritty.
+semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
+
+# Shell
+# You can set `shell.program` to the path of your favorite shell, e.g.
+# `/bin/fish`. Entries in `shell.args` are passed unmodified as arguments to the
+# shell.
+# Default:
+#   - (Linux/BSD/macOS) `$SHELL` or the user's login shell, if `$SHELL` is unset
+#   - (Windows) powershell
+# Default process for a shell on macOS should use login -fp $USERNAME and not a direct invocation of /bin/bash
+[shell]
+args = ["-fp", "hasibr"]
+program = "login"
+
+[window]
+# Window decorations
+# Values for `decorations`:
+#     - full: Borders and title bar
+#     - none: Neither borders nor title bar
+# Values for `decorations` (macOS only):
+#     - transparent: Title bar, transparent background and title bar buttons
+#     - buttonless: Title bar, transparent background and no title bar buttons
+decorations = "buttonless"
+# Background opacity
+# Window opacity as a floating point number from `0.0` to `1.0`.
+# The value `0.0` is completely transparent and `1.0` is opaque.
+opacity = 0.95
+
+# Window dimensions (changes require restart)
+# Number of lines/columns (not pixels) in the terminal. Both lines and columns
+# must be non-zero for this to take effect. The number of columns must be at
+# least `2`, while using a value of `0` for columns and lines will fall back
+# to the window manager's recommended size
+[window.dimensions]
+columns = 300
+lines = 100
+
+# Window padding (changes require restart)
+# Blank space added around the window in pixels. This padding is scaled
+# by DPI and the specified value is always added at both opposing sides.
+[window.padding]
+x = 10
+y = 10

@@ -1,3 +1,4 @@
+# DEPRECATED. Use "alacritty.toml" instead.
 # Configuration for Alacritty, the GPU enhanced terminal emulator.
 
 # Import additional configuration files
@@ -37,13 +38,6 @@ window:
   dimensions:
     columns: 300
     lines: 100
-
-  # Window position (changes require restart)
-  # Specified in number of pixels.
-  # If the position is not set, the window manager will handle the placement.
-  #position:
-    x: 0
-    y: 0
 
   # Window padding (changes require restart)
   # Blank space added around the window in pixels. This padding is scaled

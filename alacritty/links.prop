@@ -1,2 +1,2 @@
-$DOTFILES/alacritty/config/alacritty.yml=$HOME/.config/alacritty/alacritty.yml
+$DOTFILES/alacritty/config/alacritty.toml=$HOME/.config/alacritty/alacritty.toml
 $DOTFILES/alacritty/config/themes=$HOME/.config/alacritty/themes
