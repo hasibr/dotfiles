@@ -66,14 +66,17 @@ On setup, each dotfile is configured as follows:
 
     The `--init` flag initializes any new submodules that might have been added, and the `--recursive` flag ensures that nested submodules are also updated.
 
-3. In the Alacritty terminal config, update the shell configuration to use the `login` process with your username as the second arg (`echo $USERNAME` to print your username).
+3. If you are on macOS: in the Alacritty terminal config, update the shell
+    configuration to use the `login` process with your username as the second
+    arg (`echo $USERNAME` to print your username). On macOS, the default process
+    for a shell should use `login -fp $USERNAME` and not a direct invocation of
+    `/bin/bash`.
 
-    `alacritty/config/alacritty.yml`:
-    ```yaml
-    shell:
-      # Default process for a shell on macOS should use login -fp $USERNAME and not a direct invocation of /bin/bash
-      program: login
-      args: ["-fp", "hasibr"]
+    `alacritty/config/alacritty.toml`:
+    ```toml
+    [shell]
+    args = ["-fp", "hasibr"]
+    program = "login"
     ```
 
 4. Run the setup script.
@@ -87,7 +90,7 @@ On setup, each dotfile is configured as follows:
 
 ### Local ZSH Config
 
-If there's customization you want ZSH to load on startup that is specific to 
+If there's customization you want ZSH to load on startup that is specific to
 this machine (stuff you don't want to commit into the repo), create `~/.env.sh`
 and put it in there. It will be loaded near the top of `.zshrc`.
 
@@ -108,4 +111,3 @@ rm -rf ~/.local/share/nvim \
   && rm -rf ~/.cache/nvim \
   && nvim
 ```
-
