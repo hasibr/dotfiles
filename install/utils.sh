@@ -10,7 +10,7 @@
 #   Writes message to stdout.
 #######################################
 info() {
-  printf "\r  [ \033[00;34m..\033[0m ] $1\n"
+  printf "\r  [ \033[00;34m..\033[0m ] %s\n" "$1"
 }
 
 #######################################
@@ -21,7 +21,7 @@ info() {
 #   Writes message to stdout.
 #######################################
 user() {
-  printf "\r  [ \033[0;33m??\033[0m ] $1\n"
+  printf "\r  [ \033[0;33m??\033[0m ] %s\n" "$1"
 }
 
 #######################################
@@ -32,7 +32,7 @@ user() {
 #   Writes message to stdout.
 #######################################
 success() {
-  printf "\r\033[2K  [ \033[00;32mOK\033[0m ] $1\n"
+  printf "\r\033[2K  [ \033[00;32mOK\033[0m ] %s\n" "$1"
 }
 
 #######################################
@@ -43,7 +43,7 @@ success() {
 #   Writes message to stdout.
 #######################################
 fail() {
-  printf "\r\033[2K  [\033[0;31mFAIL\033[0m] $1\n"
+  printf "\r\033[2K  [\033[0;31mFAIL\033[0m] %s\n" "$1"
   echo ""
   exit
 }
@@ -104,11 +104,11 @@ is_installed_with_brew() {
 #######################################
 brew_install() {
   if is_installed_with_brew "$1"; then
-    echo "$1 is already installed."
+    printf "%s is already installed with Homebrew.\n" "$1"
   else
-    echo "Installing $1..."
+    printf "Installing %s with Homebrew.\n" "$1"
     brew install $1
-    echo "Installed $1"
+    printf "Installed %s with Homebrew.\n" "$1"
   fi
 }
 
@@ -121,10 +121,10 @@ brew_install() {
 #######################################
 brew_uninstall() {
   if is_installed_with_brew "$1"; then
-    printf "Uninstalling $1"
+    printf "Uninstalling %s with Homebrew.\n" "$1"
     brew uninstall $1
   else
-    printf "$1 is not installed using Homebrew."
+    printf "%s is not installed using Homebrew.\n" "$1"
   fi
 }
 
@@ -137,11 +137,11 @@ brew_uninstall() {
 #######################################
 brew_install_cask() {
   if is_installed_with_brew "$1"; then
-    echo "$1 is already installed."
+    printf "%s is already installed with Homebrew Cask.\n" "$1"
   else
-    echo "Installing $1..."
+    printf "Installing %s with Homebrew Cask.\n" "$1"
     brew install --cask $1
-    echo "Installed $1"
+    printf "Installed %s with Homebrew Cask.\n" "$1"
   fi
 }
 
@@ -154,9 +154,9 @@ brew_install_cask() {
 #######################################
 brew_uninstall_cask() {
   if is_installed_with_brew "$1"; then
-    printf "Uninstalling $1"
+    printf "Uninstalling %s with Homebrew Cask.\n" "$1"
     brew uninstall --cask $1
   else
-    printf "$1 is not installed using Homebrew."
+    printf "%s is not installed using Homebrew Cask.\n" "$1"
   fi
 }

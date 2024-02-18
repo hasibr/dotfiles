@@ -26,7 +26,7 @@ run_post_setup_for_tools_in_root_directory() {
       continue
     fi
 
-    printf "Running post-setup for $folder_name\n"
+    printf "Running post-setup for %s\n" "$folder_name"
     chmod +x "$app_post_setup_path"
     "$app_post_setup_path"
   done

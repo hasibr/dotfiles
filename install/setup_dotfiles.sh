@@ -32,7 +32,7 @@
 #######################################
 link_file() {
   local src=$1 dst=$2
-  printf "\rCreating symbolic link.\n  source: $src\n  destination: $dst\n"
+  printf "\rCreating symbolic link.\n  Source: %s\n  Destination: %s\n" "$src" "$dst"
 
   local overwrite=
   local backup=
@@ -55,8 +55,8 @@ link_file() {
 
       else
 
-        printf "\rFile already exists: $dst. What would you like to do?\n\
-        [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?: "
+        printf "\rFile already exists: %s. What would you like to do?\n\
+        [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?: " "$dst"
         read -n 1 action </dev/tty
 
         case "$action" in
@@ -94,12 +94,12 @@ link_file() {
 
     if [ "$overwrite" == "true" ]; then
       rm -rf "$dst"
-      printf "Removed $dst"
+      printf "Removed %s\n" "$dst"
     fi
 
     if [ "$backup" == "true" ]; then
       mv "$dst" "${dst}.backup"
-      printf "Backed up $dst. Moved to ${dst}.backup\n"
+      printf "Backed up %s. Moved to %s.backup\n" "$dst" "$dst"
     fi
 
     if [ "$skip" == "true" ]; then
@@ -157,7 +157,7 @@ install_dotfiles() {
     # Extract substring from second-last "/" to last "/" to get folder name (app name)
     local folder_name="${app_symlink_prop_fpath%/*}"
     folder_name="${folder_name##*/}"
-    printf "Installing dotfiles for $folder_name\n"
+    printf "Installing dotfiles for %s\n" "$folder_name"
 
     # Read each line of the links.prop file
     while IFS='=' read -r src dst; do
@@ -203,10 +203,10 @@ install_dotfiles() {
 create_env_file() {
   local envfile="$HOME/.env.sh"
   if file_exists "$envfile"; then
-    printf "$envfile file already exists, skipping\n"
+    printf "%s file already exists, skipping creation.\n" "$envfile"
   else
     echo "export DOTFILES=$DOTFILES" >$envfile
-    printf "Created $envfile\n"
+    printf "Created file %s\n" "$envfile"
   fi
 }
 

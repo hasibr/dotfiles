@@ -66,7 +66,7 @@ install_fonts() {
   brew tap homebrew/cask-fonts
 
   for font in "${fonts_list[@]}"; do
-    echo "Installing font: $font\n"
+    echo "Installing font: $font"
     brew_install_cask "$font"
   done
 }

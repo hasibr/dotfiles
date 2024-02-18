@@ -31,7 +31,7 @@ install_tools_in_root_directory() {
       continue
     fi
 
-    printf "Installing $folder_name"
+    printf "Installing %s\n" "$folder_name"
     # Make install script executable and run
     chmod +x "$app_install_file_path"
     "$app_install_file_path"
@@ -57,11 +57,11 @@ install_asdf() {
     # Install asdf pre-requisities (https://asdf-vm.com/guide/getting-started.html#_1-install-dependencies)
     brew_install "coreutils"
     # Install asdf
-    printf "Installing asdf"
+    printf "Installing asdf\n"
     git clone https://github.com/asdf-vm/asdf.git "$asdf_dir" --branch "$asdf_version"
     source "$asdf_dir/asdf.sh"
   else
-    printf "asdf is already installed at $asdf_dir. To update it to the latest stable release, run: asdf update"
+    printf "asdf is already installed at %s. To update it to the latest stable release, run: asdf update\n" "$asdf_dir"
   fi
 }
 
@@ -83,13 +83,13 @@ asdf_add_plugin() {
   local existing_url
   existing_url=$(asdf plugin list --urls | grep "^$plugin" | awk '{print $2}')
   if [[ -n "$existing_url" && "$existing_url" != "$plugin_url" ]]; then
-    printf "Plugin $plugin already exists with a different URL: $existing_url"
+    printf "Plugin %s already exists with a different URL: %s\n" "$plugin" "$existing_url"
   elif [[ -n "$existing_url" && "$existing_url" == "$plugin_url" ]]; then
     asdf plugin update "$plugin"
-    printf "Plugin $plugin ($plugin_url) is already added."
+    printf "Plugin %s (%s) is already added.\n" "$plugin" "$plugin_url"
   else
     asdf plugin add "$plugin" "$plugin_url"
-    printf "Plugin $plugin_name ($plugin_url) added."
+    printf "Plugin %s (%s) added.\n" "$plugin_name" "$plugin_url"
   fi
 }
 
@@ -106,16 +106,15 @@ asdf_add_plugin() {
 install_nodejs_asdf() {
   local install_version
   install_version="$1"
-  # Check if Node.js is already installed with asdf
   if asdf current nodejs >/dev/null 2>&1; then
-    printf "Node.js is already installed with asdf. You can check installed versions using: asdf list nodejs"
+    printf "Node.js is already installed with asdf. You can check installed versions using: asdf list nodejs\n"
   else
-    printf "Installing Node.js"
+    printf "Installing Node.js\n"
     asdf_add_plugin "nodejs" "https://github.com/asdf-vm/asdf-nodejs.git"
     NODEJS_CHECK_SIGNATURES=no asdf install nodejs "$install_version"
     asdf global nodejs "$install_version"
     local current_version=$(asdf current nodejs | awk '{print $2}')
-    printf "Global Node.js version set to: $current_version"
+    printf "Global Node.js version set to: %s\n" "$current_version"
   fi
 }
 
@@ -133,14 +132,14 @@ install_java_asdf() {
   local install_version
   install_version="$1"
   if asdf current java >/dev/null 2>&1; then
-    printf "Java is already installed with asdf. You can check installed versions using: asdf list java"
+    printf "Java is already installed with asdf. You can check installed versions using: asdf list java\n"
   else
-    printf "Installing Java"
+    printf "Installing Java\n"
     asdf_add_plugin "java" "https://github.com/halcyon/asdf-java.git"
     asdf install java "$install_version"
     asdf global java "$install_version"
     local current_version=$(asdf current java | awk '{print $2}')
-    printf "Global Java version set to: $current_version"
+    printf "Global Java version set to: %s\n" "$current_version"
   fi
 }
 
@@ -158,14 +157,14 @@ install_go_asdf() {
   local install_version
   install_version="$1"
   if asdf current golang >/dev/null 2>&1; then
-    printf "Golang is already installed with asdf. You can check installed versions using: asdf list golang"
+    printf "Golang is already installed with asdf. You can check installed versions using: asdf list golang\n"
   else
-    printf "Installing Golang"
+    printf "Installing Golang\n"
     asdf_add_plugin "golang" "https://github.com/kennyp/asdf-golang.git"
     asdf install golang "$install_version"
     asdf global golang "$install_version"
     local current_version=$(asdf current golang | awk '{print $2}')
-    printf "Global Golang version set to: $current_version"
+    printf "Global Golang version set to: %s\n" "$current_version"
   fi
 }
 
@@ -183,14 +182,14 @@ install_dotnet_core_asdf() {
   local install_version
   install_version="$1"
   if asdf current dotnet-core >/dev/null 2>&1; then
-    printf ".NET Core is already installed with asdf. You can check installed versions using: asdf list dotnet-core"
+    printf ".NET Core is already installed with asdf. You can check installed versions using: asdf list dotnet-core\n"
   else
-    printf "Installing .NET Core"
+    printf "Installing .NET Core\n"
     asdf_add_plugin "dotnet-core" "https://github.com/emersonsoares/asdf-dotnet-core.git"
     asdf install dotnet-core "$install_version"
     asdf global dotnet-core "$install_version"
     local current_version=$(asdf current dotnet-core | awk '{print $2}')
-    printf "Global .NET Core version set to: $current_version"
+    printf "Global .NET Core version set to: %s\n" "$current_version"
   fi
 }
 
@@ -208,14 +207,14 @@ install_kubectl_asdf() {
   local install_version
   install_version="$1"
   if asdf current kubectl >/dev/null 2>&1; then
-    printf "Kubectl is already installed with asdf. You can check installed versions using: asdf list kubectl"
+    printf "Kubectl is already installed with asdf. You can check installed versions using: asdf list kubectl\n"
   else
-    printf "Installing Kubernetes CLI (kubectl)"
+    printf "Installing Kubernetes CLI (kubectl)\n"
     asdf_add_plugin "kubectl" "https://github.com/asdf-community/asdf-kubectl.git"
     asdf install kubectl "$install_version"
     asdf global kubectl "$install_version"
     local current_version=$(asdf current kubectl | awk '{print $2}')
-    printf "Global kubectl version set to: $current_version"
+    printf "Global kubectl version set to: %s\n" "$current_version"
   fi
 }
 
@@ -233,14 +232,14 @@ install_kustomize_asdf() {
   local install_version
   install_version="$1"
   if asdf current kustomize >/dev/null 2>&1; then
-    printf "Kustomize is already installed with asdf. You can check installed versions using: asdf list kustomize"
+    printf "Kustomize is already installed with asdf. You can check installed versions using: asdf list kustomize\n"
   else
-    printf "Installing Kustomize"
+    printf "Installing Kustomize\n"
     asdf_add_plugin "kustomize" "https://github.com/Banno/asdf-kustomize.git"
     asdf install kustomize "$install_version"
     asdf global kustomize "$install_version"
     local current_version=$(asdf current kubectl | awk '{print $2}')
-    printf "Global Kustomize version set to: $current_version"
+    printf "Global Kustomize version set to: %s\n" "$current_version"
   fi
 }
 
@@ -258,14 +257,14 @@ install_skaffold_asdf() {
   local install_version
   install_version="$1"
   if asdf current skaffold >/dev/null 2>&1; then
-    printf "Skaffold is already installed with asdf. You can check installed versions using: asdf list skaffold"
+    printf "Skaffold is already installed with asdf. You can check installed versions using: asdf list skaffold\n"
   else
-    printf "Installing Skaffold"
+    printf "Installing Skaffold\n"
     asdf_add_plugin "skaffold" "https://github.com/nklmilojevic/asdf-skaffold.git"
     asdf install skaffold "$install_version"
     asdf global skaffold "$install_version"
     local current_version=$(asdf current kubectl | awk '{print $2}')
-    printf "Global Skaffold version set to: $current_version"
+    printf "Global Skaffold version set to: %s\n" "$current_version"
   fi
 }
 
@@ -283,14 +282,14 @@ install_terraform_asdf() {
   local install_version
   install_version="$1"
   if asdf current terraform >/dev/null 2>&1; then
-    printf "Terraform is already installed with asdf. You can check installed versions using: asdf list terraform"
+    printf "Terraform is already installed with asdf. You can check installed versions using: asdf list terraform\n"
   else
-    printf "Installing Terraform"
+    printf "Installing Terraform\n"
     asdf_add_plugin "terraform" "https://github.com/asdf-community/asdf-hashicorp.git"
     asdf install terraform "$install_version"
     asdf global terraform "$install_version"
     local current_version=$(asdf current terraform | awk '{print $2}')
-    printf "Global Terraform version set to: $current_version"
+    printf "Global Terraform version set to: %s\n" "$current_version"
   fi
 }
 
@@ -303,14 +302,16 @@ install_terraform_asdf() {
 #######################################
 install_npm_package_globally() {
   local package
+  local npm_version
   package="$1"
+  npm_version=$(npm --version)
   # Check if package is installed globally
   if npm list -g "$package" &>/dev/null; then
-    printf "Npm package $package is already installed globally."
+    printf "Npm package %s is already installed globally with npm %s.\n" "$package" "$npm_version"
   else
     # Install package globally
     npm install -g "$package"
-    printf "Npm package $package has been installed globally."
+    printf "Npm package %s has been installed globally with npm %s.\n" "$package" "$npm_version"
   fi
 }
 
