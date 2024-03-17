@@ -1,6 +1,6 @@
 # Dotfiles
 
-Repository containing the "dotfiles", or tools and configuration, that are used for development. It also includes scripts to automate the installation and configuration of these tools, and the system, to ensure a similar experience across any machine.
+Repository containing the "dotfiles", or tools and configuration, that are used in my development environment. It also includes scripts to automate the installation and configuration of these tools, and the system, to ensure a similar experience across any machine.
 
 ## Table of Contents
 
@@ -86,6 +86,38 @@ On setup, each dotfile is configured as follows:
     ./install/setup.sh
     ```
 
+## Update
+
+### Update Git Submodules and Push to Remote
+
+After the first time setup, you can update the Git submodules to the latest versions by running:
+
+```sh
+git submodule update --recursive --remote
+```
+
+Then stage, commit, and push the submodule changes to this repository.
+
+### Pull Latest Dotfiles from Remote
+
+To pull the latest changes to this repository and sync the local Git submodules with those in the
+remote Dotfiles repository:
+
+```sh
+git pull --rebase && \
+  git submodule update --recursive
+```
+
+### Update Neovim Configuration
+
+If Neovim configuration is changed, this may sometimes require a reinstall of the packages to ensure expected behaviour. To have all the packages reinstalled on Neovim startup, clear the Neovim local caches and start Neovim again:
+
+```sh
+rm -rf ~/.local/share/nvim \
+  && rm -rf ~/.cache/nvim \
+  && nvim
+```
+
 ## Footnotes
 
 ### Local ZSH Config
@@ -94,20 +126,3 @@ If there's customization you want ZSH to load on startup that is specific to
 this machine (stuff you don't want to commit into the repo), create `~/.env.sh`
 and put it in there. It will be loaded near the top of `.zshrc`.
 
-### Updating Submodules
-
-After the first time setup, you can update the submodules to the latest versions with the following:
-
-```sh
-git submodule update --recursive --remote
-```
-
-Commit the submodule changes to this repository.
-
-Clear the Neovim local caches to have all the packages reinstalled on Neovim startup for a working Neovim config.
-
-```sh
-rm -rf ~/.local/share/nvim \
-  && rm -rf ~/.cache/nvim \
-  && nvim
-```
