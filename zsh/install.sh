@@ -17,5 +17,5 @@ if ! directory_exists "$oh_my_zsh_dir"; then
     printf "Installing oh-my-zsh\n"
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 else
-    printf "oh-my-zsh is already installed at %s" "$oh_my_zsh_dir"
+    printf "oh-my-zsh is already installed at %s\n" "$oh_my_zsh_dir"
 fi
