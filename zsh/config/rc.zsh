@@ -85,6 +85,10 @@ export ASDF_CONFIG_FILE="$HOME/.config/asdf/asdfrc"
 # Script to set GOROOT variable
 # . "$ASDF_DIR/plugins/golang/set-env.zsh"
 
+# k9s configuration
+# Path to the k9s configuration folder
+export K9S_CONFIG_DIR="$HOME/.config/k9s"
+
 # Path
 # Add tee-clc directory to enable "tf" command
 export PATH="$PATH:$HOME/.tee-clc"
