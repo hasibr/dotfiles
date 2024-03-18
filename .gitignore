@@ -17,3 +17,10 @@ Thumbs.db
 # Ignore plugins installed with tpm, except tpm itself
 tmux/config/plugins/*
 !tmux/config/plugins/tpm
+
+# Ignore everything inside k9s/config, except for the
+# config.yaml file and skins folder and its contents
+k9s/config/*
+!k9s/config/config.yaml
+!k9s/config/skins/
+!k9s/config/skins/*
