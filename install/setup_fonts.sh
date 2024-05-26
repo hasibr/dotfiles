@@ -63,8 +63,6 @@ install_fonts() {
     #  font-victor-mono-nerd-font
   )
 
-  brew tap homebrew/cask-fonts
-
   for font in "${fonts_list[@]}"; do
     echo "Installing font: $font"
     brew_install_cask "$font"
