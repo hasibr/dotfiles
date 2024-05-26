@@ -122,6 +122,7 @@ if [ -f "$JOBFILE" ]; then
     source "$JOBFILE"
 fi
 
+# Docker aliases / functions
 dclear () {
     docker ps -a -q | xargs docker kill -f
     docker ps -a -q | xargs docker rm -f
@@ -130,6 +131,7 @@ dclear () {
 }
 
 alias docker-clear=dclear
+alias lzd='lazydocker'
 
 dreset () {
     dclear
@@ -138,7 +140,6 @@ dreset () {
     rm -rf ~/Library/Containers/com.docker.docker/Data/*
     docker system prune -a
 }
-
 
 extract-audio-and-video () {
     ffmpeg -i "$1" -c:a copy obs-audio.aac
