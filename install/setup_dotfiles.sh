@@ -173,9 +173,9 @@ install_dotfiles() {
       src="${src%"${src##*[![:space:]]}"}"
       dst="${dst%"${dst##*[![:space:]]}"}"
 
-      # Forcefully expand the entire path
-      eval "src=$src"
-      eval "dst=$dst"
+      # Forcefully expand the entire path with quotes to handle spaces in paths
+      eval "src=\"$src\""
+      eval "dst=\"$dst\""
 
       # Check if the src path is a file (ie. it is not a directory). If it is a file, we need to create
       # the directory that the file will live in before creating the symlink.
