@@ -1,7 +1,7 @@
 $DOTFILES/zsh/config/profile.zsh=$HOME/.zprofile
 $DOTFILES/zsh/config/rc.zsh=$HOME/.zshrc
-$DOTFILES/zsh/config/oh-my-zsh/custom/themes/powerlevel10k=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k
-$DOTFILES/zsh/config/oh-my-zsh/custom/plugins/zsh-autosuggestions=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-$DOTFILES/zsh/config/oh-my-zsh/custom/plugins/zsh-syntax-highlighting=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+$DOTFILES/zsh/config/oh-my-zsh/custom/themes/powerlevel10k=${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+$DOTFILES/zsh/config/oh-my-zsh/custom/plugins/zsh-autosuggestions=${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+$DOTFILES/zsh/config/oh-my-zsh/custom/plugins/zsh-syntax-highlighting=${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 $DOTFILES/zsh/config/p10k.zsh=$HOME/.p10k.zsh
 $DOTFILES/zsh/config/awsp.sh=$HOME/__awsp
