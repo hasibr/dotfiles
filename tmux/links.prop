@@ -1,2 +1,3 @@
 $DOTFILES/tmux/config/tmux.conf=$HOME/.config/tmux/tmux.conf
+$DOTFILES/tmux/config/tmux.keymaps.conf=$HOME/.config/tmux/tmux.keymaps.conf
 $DOTFILES/tmux/config/plugins=$HOME/.config/tmux/plugins
