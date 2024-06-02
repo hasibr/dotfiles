@@ -8,8 +8,7 @@ _awsp
 selected_profile="$(cat ~/.awsp)"
 
 # Set the AWS_PROFILE environment variable for the shell session
-if [ -z "$selected_profile" ]
-then
+if [ -z "$selected_profile" ]; then
   unset AWS_PROFILE
 else
   export AWS_PROFILE="$selected_profile"

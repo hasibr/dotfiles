@@ -27,7 +27,7 @@ source_if_exists "$DOTFILES/zsh/config/history.zsh"
 # Git utility functions (e.g. pretty git log)
 source_if_exists "$DOTFILES/zsh/config/git.zsh"
 # fzf, command-line fuzzy finder
-source_if_exists "~/.fzf.zsh"
+source_if_exists "$HOME/.fzf.zsh"
 # asdf executable
 export ASDF_CONFIG_FILE="$HOME/.config/asdf/asdfrc"
 source_if_exists "$HOME/.asdf/asdf.sh"
