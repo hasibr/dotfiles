@@ -323,12 +323,15 @@ install_npm_package_globally() {
 #   0 if tools were installed successfully, non-zero on error.
 #######################################
 install_other_tools() {
-  # jq, a lightweight command-line JSON processor
+  # jq: a lightweight command-line JSON processor
   brew_install "jq"
-  # fzf, a general-purpose command-line fuzzy finder (https://github.com/junegunn/fzf)
+  # fzf: a general-purpose command-line fuzzy finder (https://github.com/junegunn/fzf)
   brew_install "fzf"
   $(brew --prefix)/opt/fzf/install
-  # exa, a replacement for ls
+  # zoxide: a smart cd command that can be used to jump to most frequently used
+  # directories
+  brew_install "zoxide"
+  # exa: a replacement for ls
   brew_install "exa"
   # Redis server and redis-cli
   brew_install "redis"

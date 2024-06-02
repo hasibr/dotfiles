@@ -34,11 +34,15 @@ source_if_exists "$HOME/.asdf/asdf.sh"
 source_if_exists "/usr/local/etc/profile.d/z.sh"
 source_if_exists "/opt/homebrew/etc/profile.d/z.sh"
 
-# asdf auto-completions
+# Initialize completions
 # Append completions to fpath
+# asdf auto-completions
 fpath=(${ASDF_DIR}/completions $fpath)
 # Initialise completions with ZSH's compinit
-autoload -Uz compinit && compinit
+autoload -Uz compinit
+# Note: fpath must be fully built before calling compinit
+compinit
+eval "$(zoxide init zsh)"
 
 # oh-my-zsh auto-update behavior
 # zstyle ':omz:update' mode disabled  # disable automatic updates
@@ -56,7 +60,6 @@ plugins=(
 	git
 	zsh-autosuggestions
 	zsh-syntax-highlighting
-    z
 )
 
 source_if_exists "$ZSH/oh-my-zsh.sh"
