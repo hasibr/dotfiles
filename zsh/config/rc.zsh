@@ -92,6 +92,13 @@ export ASDF_CONFIG_FILE="$HOME/.config/asdf/asdfrc"
 # Path to the k9s configuration folder
 export K9S_CONFIG_DIR="$HOME/.config/k9s"
 
+# Go configuration
+# Version selection: When using .tool-versions or .go-version, the exact
+# version specified in the file will be selected. When using go.mod, the
+# highest compatible version that is currently installed will be selected.
+# Include go.mod and go.work for version selection.
+export ASDF_GOLANG_MOD_VERSION_ENABLED=true
+
 # Path
 # Add tee-clc directory to enable "tf" command
 export PATH="$PATH:$HOME/.tee-clc"
@@ -100,7 +107,7 @@ export PATH="$PATH:$HOME/.rd/bin"
 # Add dotnet tools directory to path
 export PATH="$PATH:$HOME/.dotnet/tools"
 # Add GOPATH ("$ASDF_DIR/installs/golang/<version>/packages/bin") to the path
-# export PATH="$PATH:$(go env GOPATH)/bin"
+export PATH="$PATH:$(go env GOPATH)/bin"
 # Add postgresql@16 (psql) to path
 export PATH="$PATH:/opt/homebrew/opt/postgresql@16/bin"
 
