@@ -331,8 +331,8 @@ install_other_tools() {
   # zoxide: a smart cd command that can be used to jump to most frequently used
   # directories
   brew_install "zoxide"
-  # exa: a replacement for ls
-  brew_install "exa"
+  # eza (https://github.com/eza-community/eza): a replacement for ls
+  brew_install "eza"
   # Redis server and redis-cli
   brew_install "redis"
   # Postgresql server and psql cli

@@ -26,10 +26,10 @@ alias tks='tmux kill-session -t'
 
 # Aliases for exa - replacements for ls and la.
 # Tree view: lt <depth> (default is 1)
-if [ -x "$(command -v exa)" ]; then
-    alias ls="exa --long --icons"
-    alias la="exa --long --header --all --group --icons"
-    lt() { exa -alhT --icons --grid --git -I'.git|node_modules|.mypy_cache|.pytest_cache|.venv' --color=always "-L${1:-1}" | less -R }
+if [ -x "$(command -v eza)" ]; then
+    alias ls="eza --long --icons --all"
+    alias la="eza --long --header --all --group --icons"
+    lt() { eza -alhT --icons --grid --git -I'.git|node_modules|.mypy_cache|.pytest_cache|.venv' --color=always "-L${1:-1}" | less -R }
 fi
 alias c='clear'
 alias s='source ~/.zshrc'
