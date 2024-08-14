@@ -263,7 +263,7 @@ install_skaffold_asdf() {
     asdf_add_plugin "skaffold" "https://github.com/nklmilojevic/asdf-skaffold.git"
     asdf install skaffold "$install_version"
     asdf global skaffold "$install_version"
-    local current_version=$(asdf current kubectl | awk '{print $2}')
+    local current_version=$(asdf current skaffold | awk '{print $2}')
     printf "Global Skaffold version set to: %s\n" "$current_version"
   fi
 }
