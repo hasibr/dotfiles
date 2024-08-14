@@ -342,9 +342,10 @@ install_other_tools() {
   install_asdf
   install_nodejs_asdf "latest:18"
   install_java_asdf "latest:temurin-17"
-  # install_go_asdf "latest"
-  install_dotnet_core_asdf "latest:6"
-  # install_kubectl_asdf "latest:1.26"
+  install_go_asdf "latest:1.23"
+  install_dotnet_core_asdf "latest:8"
+  install_kubectl_asdf "latest:1.29"
+  install_skaffold_asdf "latest"
   # Kustomize is blocked on releasing for windows and darwin ARM until #5220 (https://github.com/kubernetes-sigs/kustomize/issues/5220) is resolved.
   # install_kustomize_asdf "latest"
   # install_terraform_asdf "latest"
