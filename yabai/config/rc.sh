@@ -1,5 +1,13 @@
 #!/usr/bin/env sh
 
+# Load the scripting addition
+# Requires script that configures your user to execute
+# yabai --load-sa as the root user without password.
+# This script must be in: /private/etc/sudoers.d/yabai
+# See: https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+sudo yabai --load-sa
+
 # global settings
 yabai -m config mouse_follows_focus off
 yabai -m config focus_follows_mouse off
