@@ -50,5 +50,6 @@ yabai -m rule --add app="^iStat Menus$" manage=off
 # Disable window management of Alacritty by yabai since hammerspoon manages it
 # appearing / disappearing quake-style on active window in full-screen.
 yabai -m rule --add app="^Alacritty$" manage=off
+yabai -m rule --apply
 
 echo "yabai configuration loaded.."
