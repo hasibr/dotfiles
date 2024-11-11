@@ -325,12 +325,30 @@ install_npm_package_globally() {
 install_go_tools() {
   if command -v go >/dev/null 2>&1; then
     printf "Installing tools for Go development.\n"
-    # gofumpt, a stricter code formatter than gofmt
-    go install mvdan.cc/gofumpt@latest
-    # Tool for Golang to sort goimports
-    go install -v github.com/incu6us/goimports-reviser/v3@latest
-    # Golines is a Go code formatter that shortens long lines
-    go install github.com/segmentio/golines@latest
+
+    # Check and install gofumpt, a stricter code formatter than gofmt
+    if ! command -v gofumpt >/dev/null 2>&1; then
+      printf "Installing gofumpt...\n"
+      go install mvdan.cc/gofumpt@latest
+    else
+      printf "gofumpt is already installed.\n"
+    fi
+
+    # Check and install goimports-reviser, tool for Golang to sort imports
+    if ! command -v goimports-reviser >/dev/null 2>&1; then
+      printf "Installing goimports-reviser...\n"
+      go install -v github.com/incu6us/goimports-reviser/v3@latest
+    else
+      printf "goimports-reviser is already installed.\n"
+    fi
+
+    # Check and install golines, a Go code formatter that shortens long lines
+    if ! command -v golines >/dev/null 2>&1; then
+      printf "Installing golines...\n"
+      go install github.com/segmentio/golines@latest
+    else
+      printf "golines is already installed.\n"
+    fi
   else
     printf "Go is not installed. Skipping installation of tools for Go development.\n"
   fi
