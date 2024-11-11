@@ -316,6 +316,22 @@ install_npm_package_globally() {
 }
 
 #######################################
+# Install tools for Go development.
+# Arguments:
+#   None.
+# Returns:
+#   0 if it was installed successfully, non-zero on error.
+#######################################
+install_go_tools() {
+  # gofumpt, a stricter code formatter than gofmt
+  go install mvdan.cc/gofumpt@latest
+  # Tool for Golang to sort goimports
+  go install -v github.com/incu6us/goimports-reviser/v3@latest
+  # Golines is a Go code formatter that shortens long lines
+  go install github.com/segmentio/golines@latest
+}
+
+#######################################
 # Install other tools.
 # Arguments:
 #   None
@@ -352,6 +368,8 @@ install_other_tools() {
 
   # Install awsp (AWS profile switcher) tool: https://github.com/johnnyopao/awsp
   install_npm_package_globally "awsp"
+
+  install_go_tools
 }
 
 #######################################
