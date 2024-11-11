@@ -160,7 +160,7 @@ install_go_asdf() {
     printf "Golang is already installed with asdf. You can check installed versions using: asdf list golang\n"
   else
     printf "Installing Golang\n"
-    asdf_add_plugin "golang" "https://github.com/kennyp/asdf-golang.git"
+    asdf_add_plugin "golang" "https://github.com/asdf-community/asdf-golang.git"
     asdf install golang "$install_version"
     asdf global golang "$install_version"
     local current_version=$(asdf current golang | awk '{print $2}')
