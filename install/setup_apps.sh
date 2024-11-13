@@ -375,7 +375,7 @@ install_other_tools() {
   # Redis server and redis-cli
   brew_install "redis"
   # Postgresql server and psql cli
-  brew_install "postgresql@16"
+  brew_install "postgresql@17"
 
   # Install asdf and software tools with asdf
   install_asdf
