@@ -126,3 +126,16 @@ If there's customization you want ZSH to load on startup that is specific to
 this machine (stuff you don't want to commit into the repo), create `~/.env.sh`
 and put it in there. It will be loaded near the top of `.zshrc`.
 
+### Yabai
+
+Some features of the window management utility Yabai require System Integrity
+Protection (SIP) on macOS to be disabled. This may be required during first time
+setup. Refer to Yabai's installation documentation for instructions: [link](https://github.com/koekeishiya/yabai/wiki/Disabling-System-Integrity-Protection).
+
+Afterwards, as Yabai is ugpraded (e.g. via Homebrew, see [upgrade instructions](https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)#updating-to-the-latest-release)),
+the SHA256 hash of the new yabai binary must be updated in the configuration entry.
+This can be done by running this command or re-running the setup script:
+
+```sh
+echo "$(whoami) ALL=(root) NOPASSWD: sha256:$(shasum -a 256 $(which yabai) | cut -d " " -f 1) $(which yabai) --load-sa" | sudo tee /private/etc/sudoers.d/yabai
+```
