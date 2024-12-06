@@ -367,6 +367,9 @@ install_other_tools() {
   # fzf: a general-purpose command-line fuzzy finder (https://github.com/junegunn/fzf)
   brew_install "fzf"
   $(brew --prefix)/opt/fzf/install
+  # ripgrep: a line-oriented search tool (https://github.com/BurntSushi/ripgrep)
+  # Required for Telescope in Neovim
+  brew_install "ripgrep"
   # zoxide: a smart cd command that can be used to jump to most frequently used
   # directories
   brew_install "zoxide"
