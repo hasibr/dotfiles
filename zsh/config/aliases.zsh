@@ -160,3 +160,55 @@ copy-line () {
 open-at-line () {
   vim $(rg --line-number "${1:-.}" | sk --delimiter ':' --preview 'bat --color=always --highlight-line {2} {1}' | awk -F ':' '{print "+"$2" "$1}')
 }
+
+#######################################
+# Formats all Shell (.sh) scripts in the current and subdirectories using shfmt.
+# Runs `shfmt` inside a Docker container and applies formatting according
+# to Google's Shell Style Guide.
+# Options used:
+# - `-i 2`: Indent with 2 spaces instead of tabs.
+# - `-ci`: Indent switch cases.
+# - `-w`: Write changes to files.
+# Globals:
+#   PWD
+# Arguments:
+#   None
+# Returns:
+#   0 if formatting succeeds, non-zero otherwise.
+#######################################
+format_shell_scripts() {
+  printf "Formatting *.sh files in directory (and sub-directories): %s\n..." "$PWD"
+  docker run --rm \
+    --platform linux/amd64 \
+    --volume="$PWD":"/work" \
+    tmknom/shfmt -i 2 -ci -w **/*.sh
+  local exit_code=$?
+  print_if_success $exit_code "Done." "Error formatting *.sh files."
+}
+
+#######################################
+# Prints a success or failure message based on the exit status of the last command.
+# Globals:
+#   None
+# Arguments:
+#   $1 - Exit status of the command to evaluate.
+#   $2 - Message to print if the previous command succeeded.
+#   $3 - Message to print if the previous command failed.
+# Returns:
+#   0
+#######################################
+print_if_success() {
+  local exit_code
+  local success
+  local fail
+  exit_code=$1
+  success="$2"
+  fail="$3"
+  if [ "$exit_code" -eq 0 ]; then
+    printf "%s\n" "$success"
+  else
+    printf "%s\n" "$fail"
+  fi
+}
+
+alias shfmt=format_shell_scripts
