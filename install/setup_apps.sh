@@ -388,8 +388,7 @@ install_other_tools() {
   install_dotnet_core_asdf "latest:8"
   install_kubectl_asdf "latest:1.29"
   install_skaffold_asdf "latest"
-  # Kustomize is blocked on releasing for windows and darwin ARM until #5220 (https://github.com/kubernetes-sigs/kustomize/issues/5220) is resolved.
-  # install_kustomize_asdf "latest"
+  install_kustomize_asdf "latest"
   # install_terraform_asdf "latest"
 
   # Install awsp (AWS profile switcher) tool: https://github.com/johnnyopao/awsp
