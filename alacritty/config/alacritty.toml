@@ -6,7 +6,7 @@
 # will be replaced.
 # All imports must either be absolute paths starting with `/`, or paths relative
 # to the user's home directory starting with `~/`.
-
+[general]
 # Catppuccin color schemes (https://github.com/catppuccin/alacritty)
 import = ["~/.config/alacritty/themes/catppuccin/catppuccin-mocha.toml"]
 # import = ["~/.config/alacritty/themes/catppuccin/catppuccin-mocha.toml"]
@@ -169,7 +169,7 @@ semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
 #   - (Linux/BSD/macOS) `$SHELL` or the user's login shell, if `$SHELL` is unset
 #   - (Windows) powershell
 # Default process for a shell on macOS should use login -fp $USERNAME and not a direct invocation of /bin/bash
-[shell]
+[terminal.shell]
 args = ["-fp", "hasibr"]
 program = "login"
 
