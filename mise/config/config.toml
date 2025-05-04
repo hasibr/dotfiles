@@ -1,0 +1,39 @@
+[tools]
+dotnet-core = "8"
+go-sdk = "latest"
+java = "temurin-17"
+kubectl = "1.30"
+kustomize = "latest"
+node = "22"
+skaffold = "latest"
+
+[settings]
+# Enable tools to read the version files used by other version managers:
+# - .nvmrc used in node's nvm
+idiomatic_version_file_enable_tools = ["node"]
+
+# Configure `mise install` to always keep the downloaded archive
+always_keep_download = false        # deleted after install by default
+always_keep_install = false         # deleted on failure by default
+
+# Configure how frequently (in minutes) to fetch updated plugin repository
+# changes. This is updated whenever a new runtime is installed.
+plugin_autoupdate_last_check_duration = '1 week' # set to 0 to disable updates
+
+verbose = false       # Set to true to see full installation output, see `MISE_VERBOSE`
+http_timeout = "30s"  # Set the timeout for http requests as duration string, see `MISE_HTTP_TIMEOUT`
+jobs = 4              # Number of plugins or runtimes to install in parallel. The default is `4`.
+raw = false           # Set to true to directly pipe plugins to stdin/stdout/stderr
+yes = false           # Set to true to automatically answer yes to all prompts
+
+not_found_auto_install = false # Do not autoinstall missing tool versions
+task_output = "prefix" # See Tasks Runner for more information
+paranoid = false       # See MISE_PARANOID
+
+disable_default_shorthands = false  # Disable the default shorthands, see `MISE_DISABLE_DEFAULT_SHORTHANDS`
+disable_tools = []                  # Disable specific tools, generally used to turn off core tools
+
+experimental = true   # Enable experimental features
+
+# Configure messages displayed when entering directories with config files
+status = { missing_tools = "if_other_versions_installed", show_env = false, show_tools = false }

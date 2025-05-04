@@ -1,6 +1,10 @@
 # Dotfiles
 
 Repository containing the "dotfiles", or tools and configuration, that are used in my development environment. It also includes scripts to automate the installation and configuration of these tools, and the system, to ensure a similar experience across any machine.
+Repository containing the "dotfiles", or tools and configuration, that are used
+in my development environment. It also includes scripts to automate the
+installation and configuration of these tools, and the system, to ensure a
+similar experience across any machine.
 
 ## Table of Contents
 
@@ -72,9 +76,10 @@ On setup, each dotfile is configured as follows:
     for a shell should use `login -fp $USERNAME` and not a direct invocation of
     `/bin/bash`.
 
-    `alacritty/config/alacritty.toml`:
+    [alacritty/config/alacritty.toml](alacritty/config/alacritty.toml):
+
     ```toml
-    [shell]
+    [terminal.shell]
     args = ["-fp", "hasibr"]
     program = "login"
     ```

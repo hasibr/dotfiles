@@ -27,21 +27,11 @@ source_if_exists "$DOTFILES/zsh/config/history.zsh"
 # Git utility functions (e.g. pretty git log)
 source_if_exists "$DOTFILES/zsh/config/git.zsh"
 # fzf, command-line fuzzy finder
-source_if_exists "$HOME/.fzf.zsh"
-# asdf executable
-export ASDF_CONFIG_FILE="$HOME/.config/asdf/asdfrc"
-source_if_exists "$HOME/.asdf/asdf.sh"
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
 source_if_exists "/usr/local/etc/profile.d/z.sh"
 source_if_exists "/opt/homebrew/etc/profile.d/z.sh"
 
-# Initialize completions
-# Append completions to fpath
-# asdf auto-completions
-fpath=(${ASDF_DIR}/completions $fpath)
-# Initialise completions with ZSH's compinit
-autoload -Uz compinit
-# Note: fpath must be fully built before calling compinit
-compinit
 eval "$(zoxide init zsh)"
 
 # oh-my-zsh auto-update behavior
@@ -60,6 +50,7 @@ plugins=(
 	git
 	zsh-autosuggestions
 	zsh-syntax-highlighting
+    mise
 )
 
 source_if_exists "$ZSH/oh-my-zsh.sh"
@@ -76,28 +67,9 @@ source_if_exists "$ZSH/oh-my-zsh.sh"
 export VISUAL=nvim
 export EDITOR=nvim
 
-# asdf configuration
-# Path to the .asdfrc configuration file
-export ASDF_CONFIG_FILE="$HOME/.config/asdf/asdfrc"
-
-# asdf plugins
-# dotnet-core (https://github.com/emersonsoares/asdf-dotnet-core)
-# Script to set DOTNET_ROOT environment variable
-. "$ASDF_DIR/plugins/dotnet-core/set-dotnet-home.zsh"
-# Go (https://github.com/kennyp/asdf-golang)
-# Script to set GOROOT variable
-# . "$ASDF_DIR/plugins/golang/set-env.zsh"
-
 # k9s configuration
 # Path to the k9s configuration folder
 export K9S_CONFIG_DIR="$HOME/.config/k9s"
-
-# Go configuration
-# Version selection: When using .tool-versions or .go-version, the exact
-# version specified in the file will be selected. When using go.mod, the
-# highest compatible version that is currently installed will be selected.
-# Include go.mod and go.work for version selection.
-export ASDF_GOLANG_MOD_VERSION_ENABLED=true
 
 # Path
 # Add tee-clc directory to enable "tf" command
@@ -106,7 +78,7 @@ export PATH="$PATH:$HOME/.tee-clc"
 export PATH="$PATH:$HOME/.rd/bin"
 # Add dotnet tools directory to path
 export PATH="$PATH:$HOME/.dotnet/tools"
-# Add GOPATH ("$ASDF_DIR/installs/golang/<version>/packages/bin") to the path
+# Add GOPATH to the path
 export PATH="$PATH:$(go env GOPATH)/bin"
 # Add postgresql@16 (psql) to path
 export PATH="$PATH:/opt/homebrew/opt/postgresql@17/bin"
@@ -118,6 +90,11 @@ export PATH="$PATH:/opt/homebrew/opt/postgresql@17/bin"
 # For a full list of active aliases, run `alias`.
 source_if_exists "$DOTFILES/zsh/config/aliases.zsh"
 # -----
+
+# ----- Activate mise
+# Automatically load the mise context (tools and environment variables) in the
+# shell session.
+eval "$(mise activate zsh)"
 
 # ----- Section below is managed by other applications
 
@@ -137,3 +114,6 @@ else
 fi
 unset __mamba_setup
 # <<< mamba initialize <<<
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
