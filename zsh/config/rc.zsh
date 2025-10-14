@@ -99,18 +99,14 @@ eval "$(mise activate zsh)"
 # ----- Section below is managed by other applications
 
 # >>> mamba initialize >>>
-# !! Contents within this block are managed by 'mamba init' !!
-export MAMBA_EXE="/opt/homebrew/opt/micromamba/bin/micromamba";
-export MAMBA_ROOT_PREFIX="/Users/hrahman/micromamba";
+# !! Contents within this block are managed by 'mamba shell init' !!
+export MAMBA_EXE='/opt/homebrew/opt/micromamba/bin/mamba';
+export MAMBA_ROOT_PREFIX='/Users/hasibr/mamba';
 __mamba_setup="$("$MAMBA_EXE" shell hook --shell zsh --root-prefix "$MAMBA_ROOT_PREFIX" 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__mamba_setup"
 else
-    if [ -f "/Users/hrahman/micromamba/etc/profile.d/micromamba.sh" ]; then
-        . "/Users/hrahman/micromamba/etc/profile.d/micromamba.sh"
-    else
-        export  PATH="/Users/hrahman/micromamba/bin:$PATH"  # extra space after export prevents interference from conda init
-    fi
+    alias mamba="$MAMBA_EXE"  # Fallback on help from mamba activate
 fi
 unset __mamba_setup
 # <<< mamba initialize <<<
