@@ -4,7 +4,7 @@ M = {}
 
 local function resizeWindowToScreenFrame(win)
 	local scrFrame = hs.screen.mainScreen():frame()
-	win:setFrame(scrFrame, 0)
+	win:setFrame(scrFrame)
 end
 
 local function onAppLaunch(appName, callback)
