@@ -20,7 +20,7 @@ install_tools_in_root_directory() {
   skip_folders=("bin" "install" "scripts")
 
   # Find folders in dotfiles directory with a install.sh file (returns list of paths)
-  find -H "$DOTFILES" -maxdepth 2 -name "$install_script" | while read app_install_file_path; do
+  while read app_install_file_path; do
     # Extract substring from second-last "/" to last "/" to get folder name (app name)
     local folder_name
     folder_name="${app_install_file_path%/*}"
@@ -35,7 +35,7 @@ install_tools_in_root_directory() {
     # Make install script executable and run
     chmod +x "$app_install_file_path"
     "$app_install_file_path"
-  done
+  done < <(find -H "$DOTFILES" -maxdepth 2 -name "$install_script")
 }
 
 #######################################
@@ -164,6 +164,9 @@ install_other_tools() {
   brew_install "jq"
   # fzf: a general-purpose command-line fuzzy finder (https://github.com/junegunn/fzf)
   brew_install "fzf"
+  # tree-sitter-cli: parsing library that enables/improves code analysis / syntax
+  # highlighting
+  brew_install "tree-sitter-cli"
   # ripgrep: a line-oriented search tool (https://github.com/BurntSushi/ripgrep)
   # Required for Telescope in Neovim
   brew_install "ripgrep"

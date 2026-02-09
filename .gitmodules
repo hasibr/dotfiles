@@ -20,4 +20,4 @@
 	shallow = true
 [submodule "nvim/config"]
 	path = nvim/config
-	url = https://github.com/hasibr/NvChad.git
+	url = https://github.com/hasibr/nvchad-starter.git

@@ -21,6 +21,6 @@ configure_scripting_addition() {
 brew_install "koekeishiya/formulae/yabai"
 configure_scripting_addition
 # Start service after installation
-yabai --start-service &>/dev/null
+yabai --restart-service &>/dev/null || true
 # Load scripting addition manually
-sudo yabai --load-sa
+sudo yabai --load-sa || true
