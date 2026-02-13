@@ -162,6 +162,8 @@ install_other_tools() {
   brew_install "coreutils"
   # jq: a lightweight command-line JSON processor
   brew_install "jq"
+  # yq: a lightweight command-line yaml (and json, ini, xml) processor
+  brew_install "yq"
   # fzf: a general-purpose command-line fuzzy finder (https://github.com/junegunn/fzf)
   brew_install "fzf"
   # tree-sitter-cli: parsing library that enables/improves code analysis / syntax
@@ -184,12 +186,13 @@ install_other_tools() {
   mise_install "node@22" true
   mise_install "dotnet-core@8" true
   mise_install "dotnet-core@6" false
-  mise_install "go-sdk" true
+  mise_install "dotnet-core@10" false
+  mise_install "go-sdk@1.26" true
   mise_install "java@temurin-17" true
-  mise_install "kubectl@1.30" true
+  mise_install "kubectl@1.35" true
   mise_install "kustomize" true
   mise_install "skaffold" true
-#  mise_install_global "terraform" true
+  #  mise_install_global "terraform" true
 
   # Install awsp (AWS profile switcher) tool: https://github.com/johnnyopao/awsp
   install_npm_package_globally "awsp"

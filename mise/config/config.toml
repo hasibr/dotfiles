@@ -1,9 +1,10 @@
 [tools]
 dotnet-core = "8"
-go-sdk = "latest"
+go-sdk = "1.26"
 java = "temurin-17"
-kubectl = "1.30"
+kubectl = "1.35"
 kustomize = "latest"
+maven = "latest"
 node = "22"
 skaffold = "latest"
 
