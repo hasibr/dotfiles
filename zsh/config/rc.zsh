@@ -82,6 +82,7 @@ export PATH="$PATH:$HOME/.dotnet/tools"
 export PATH="$PATH:$(go env GOPATH)/bin"
 # Add postgresql@16 (psql) to path
 export PATH="$PATH:/opt/homebrew/opt/postgresql@17/bin"
+export PATH="$PATH:$HOME/.local/bin"
 
 # ----- Personal aliases
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
